@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <!-- Basic Page Info -->
-  <meta charset="utf-8">
-  <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
-
-  <!-- Site favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
-
-  <!-- Mobile Specific Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-  <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-  <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
-
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-119386393-1');
-  </script>
-</head>
-
-<body>
   <!-- Inicio del Precaargador -->
   <div class="pre-loader">
     <div class="pre-loader-box">
@@ -56,13 +19,6 @@
       <div class="menu-icon dw dw-menu"></div>
     </div>
     <div class="header-right">
-      <div class="dashboard-setting user-notification">
-        <div class="dropdown">
-          <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-            <i class="dw dw-settings"></i>
-          </a>
-        </div>
-      </div>
       <div class="user-info-dropdown">
         <div class="dropdown">
           <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -73,9 +29,9 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
             <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Perfil</a>
-            <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Configuración</a>
-            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Ayuda</a>
-            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Cerrar sesión</a>
+            <a class="dropdown-item" href="javascript:;" data-toggle="right-sidebar"><i class="dw dw-paint-palette"></i>
+              Diseño</a>
+            <a class="dropdown-item" href="login.html"><i class="dw dw-logout-1"></i> Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -91,7 +47,7 @@
         <span class="btn-block font-weight-400 font-12">Configuración de la Interfaz de Usuario</span>
       </h3>
       <div class="close-sidebar" data-toggle="right-sidebar-close">
-        <i class="icon-copy ion-close-round"></i>
+        <i class="icon-copy dw dw-cancel"></i>
       </div>
     </div>
     <div class="right-sidebar-body customscroll">
@@ -170,6 +126,7 @@
   </div>
   <!-- Fin del Menu lateral de diseño -->
 
+  <!-- Inicio del Menu derecho -->
   <div class="left-side-bar">
     <div class="brand-logo">
       <a href="index.html">
@@ -177,7 +134,7 @@
         <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
       </a>
       <div class="close-sidebar" data-toggle="left-sidebar-close">
-        <i class="ion-close-round"></i>
+        <i class="icon-copy dw dw-cancel"></i>
       </div>
     </div>
     <div class="menu-block customscroll">
@@ -185,9 +142,19 @@
         <ul id="accordion-menu">
           <!-- Menu Inicio -->
           <li>
-            <a href="calendar.html" class="dropdown-toggle no-arrow">
+            <a href="index.html" class="dropdown-toggle no-arrow">
               <span class="micon dw dw-house1"></span><span class="mtext">Inicio</span>
             </a>
+          </li>
+          <!-- Menu Facturación -->
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-invoice"></span><span class="mtext">Facturación</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="basic-table.html">Basic Tables</a></li>
+              <li><a href="datatable.html">DataTables</a></li>
+            </ul>
           </li>
           <!-- Menu Clientes -->
           <li class="dropdown">
@@ -203,7 +170,7 @@
           <!-- Menu Proveedores -->
           <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-user-11"></span><span class="mtext">Proveedores</span>
+              <span class="micon dw dw-truck"></span><span class="mtext">Proveedores</span>
             </a>
             <ul class="submenu">
               <li><a href="form-basic.html">Form Basic</a></li>
@@ -225,6 +192,23 @@
               <li><a href="datatable.html">DataTables</a></li>
             </ul>
           </li>
+          <!-- Menu Inventario -->
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-book1"></span><span class="mtext">Inventario</span>
+
+            </a>
+            <ul class="submenu">
+              <li><a href="basic-table.html">Productos</a></li>
+              <li><a href="datatable.html">DataTables</a></li>
+            </ul>
+          </li>
+          <!-- Menu Reportes -->
+          <li>
+            <a href="calendar.html" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-layers"></span><span class="mtext">Reportes</span>
+            </a>
+          </li>
           <!-- Menu Configuracion -->
           <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
@@ -240,41 +224,5 @@
       </div>
     </div>
   </div>
-
+  <!-- Fin del Menu derecho -->
   <div class="mobile-menu-overlay"></div>
-
-  <div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
-      <div class="min-height-200px">
-        <div class="page-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="title">
-                <h4>Inicio</h4>
-              </div>
-              <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                </ol>
-              </nav>
-            </div>
-
-          </div>
-        </div>
-        <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-        </div>
-      </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit
-          Hingarajiya</a>
-      </div>
-    </div>
-  </div>
-  <!-- js -->
-  <script src="vendors/scripts/core.js"></script>
-  <script src="vendors/scripts/script.min.js"></script>
-  <script src="vendors/scripts/process.js"></script>
-  <script src="vendors/scripts/layout-settings.js"></script>
-</body>
-
-</html>
