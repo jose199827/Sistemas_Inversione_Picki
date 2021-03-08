@@ -195,9 +195,9 @@
               <span class="micon dw dw-group"></span><span class="mtext">Clientes</span>
             </a>
             <ul class="submenu">
-              <li><a href="index.html">Dashboard style 1</a></li>
-              <li><a href="index2.html">Dashboard style 2</a></li>
-              <li><a href="index3.html">Dashboard style 3</a></li>
+              <li><a href="clientes.php">Clientes</a></li>
+              <!--<li><a href="index2.html">Dashboard style 2</a></li>
+              <li><a href="index3.html">Dashboard style 3</a></li> -->
             </ul>
           </li>
           <!-- Menu Proveedores -->
@@ -239,42 +239,195 @@
         </ul>
       </div>
     </div>
-  </div>
+  	</div>
 
-  <div class="mobile-menu-overlay"></div>
+	<div class="mobile-menu-overlay"></div>
 
-  <div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
-      <div class="min-height-200px">
-        <div class="page-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="title">
-                <h4>Inicio</h4>
-              </div>
-              <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                </ol>
-              </nav>
-            </div>
+	<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Inversiones Picky</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Clientes</li>
+								</ol>
+							</nav>
+						</div>
+						<div class="col-md-6 col-sm-12 text-right">
+                    <!-- Modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Agregar Cliente</button>
+					  <!-- Modal -->
+					  <div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <!--<h4 class="modal-title">AGREGAR CLIENTE</h4> -->
+					        </div>
+					        <div class="modal-body">
+                           <div class="modal-body card-body wizard-content text-left">
+                                    <form action="#" class="" id="prueba">
+                                        <section>
+                                            <!-- input datos generales -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="Nombre">ID Cliente : <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="Nombre"> Empresa : <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="Apellido">RTN Empresa : <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control required" id="Apellido" name="Apellido" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="Apellido"> ID Tipo de Cliente : <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control required" id="Apellido" name="Apellido" required>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="Apellido"> Registro de Usuario : <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control required" id="Apellido" name="Apellido" required>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+									        <div class="modal-footer">
+									          <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+									          <button type="button" class="btn btn-basic" data-dismiss="modal">Cerrar</button>
+									        </div>
+  										</section>
+  									</form>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+                     </div>
+                 </div>
 
-          </div>
-        </div>
-        <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-        </div>
-      </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit
-          Hingarajiya</a>
-      </div>
-    </div>
-  </div>
-  <!-- js -->
-  <script src="vendors/scripts/core.js"></script>
-  <script src="vendors/scripts/script.min.js"></script>
-  <script src="vendors/scripts/process.js"></script>
-  <script src="vendors/scripts/layout-settings.js"></script>
-</body>
-
+					<!-- TERMINA MODAL -->
+					<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Tabla Clientes</h4>
+					</div>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<!--
+									<th><div class="dt-checkbox">
+											<input type="checkbox" name="select_all" value="1" id="example-select-all">
+											<span class="dt-checkbox-label"></span>
+										</div>
+									</th>
+								-->
+									<th class="table-plus datatable-nosort">Núm</th>
+									<th>ID CLiente</th>
+									<th>Empresa</th>
+									<th>RTN Empresa</th>
+									<th>ID Tipo Cliente</th>
+									<th>Usr Registro</th>
+									<th class="datatable-nosort">Acción</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="dt-checkbox nowrap">
+										<input type="checkbox" name="select_all" value="1" id="example-select-all">
+										<span class="dt-checkbox-label"></span>
+									</td>
+									<td>25</td>
+									<td>Global IT</td>
+									<td>0801199872515815 </td>
+									<td>12654</td>
+									<td>F365DF6</td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> Ver</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Eliminar</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="dt-checkbox">
+										<input type="checkbox" name="select_all" value="1" id="example-select-all">
+										<span class="dt-checkbox-label"></span>
+									</td>
+									<td>30</td>
+									<td>M&L TEC</td>
+									<td>071519762365847 </td>
+									<td>32980</td>
+									<td>ER63218</td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- Export Datatable End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>
