@@ -195,9 +195,10 @@
               <span class="micon dw dw-group"></span><span class="mtext">Clientes</span>
             </a>
             <ul class="submenu">
-              <li><a href="clientes.php">Clientes</a></li>
-              <li><a href="index2.html">Dashboard style 2</a></li>
-              <li><a href="index3.html">Dashboard style 3</a></li>
+              <li><a href="adjclientes.html">Agregar Clientes</a></li>
+              <li><a href="clientes.php">Tabla Control Clientes</a></li>
+              <!--<li><a href="index2.html">Dashboard style 2</a></li>
+              <li><a href="index3.html">Dashboard style 3</a></li> -->
             </ul>
           </li>
           <!-- Menu Proveedores -->
@@ -239,42 +240,155 @@
         </ul>
       </div>
     </div>
-  </div>
+  	</div>
 
-  <div class="mobile-menu-overlay"></div>
+	<div class="mobile-menu-overlay"></div>
 
-  <div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
-      <div class="min-height-200px">
-        <div class="page-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="title">
-                <h4>Inicio</h4>
+	<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+		
+
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<div class="row">
+                    <div class="col-6">
+						<h4 class="text-blue h4">Banco</h4>
+					</div>
+					<div class="col-6 text-right">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#small-modaladdbanco">Agregar</button>
+                    </div>
+                </div>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">N.°</th>
+									<th>Nombre Banco</th>
+									<th >Abreviatura</th>
+									<th class="datatable-nosort">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="table-plus">1</td>
+									<td>Bac Credomatic</td>
+									<td>BAC</td>
+									<td>
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                          </div>
+                      </td>
+								</tr>
+								<tr>
+									<td class="table-plus">2</td>
+									<td>El Banco de Occidente C.A.</td>
+									<td>Ocidente</td>
+
+									<td>
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                          </div>
+                      </td>
+								</tr>
+								<tr>
+									<td class="table-plus">3</td>
+									<td>Grupo Financiero Ficohsa</td>	
+									<td>Ficohsa</td>
+									<td>
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                          </div>
+                      </td>
+								</tr>
+
+							</tbody>
+						</table>
+					<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1-10 of 12 entries</div>
+					</div>
+
+				</div>
+				<!-- Export Datatable End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Inversiones Picki 2021
+			</div>
+		</div>
+
+		
+            <div class="modal fade" id="small-modaladdbanco" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">Registrar Banco</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                          <!-- Nombre del producto -->
+                          <div class="form-group">
+                            <label>Nombre del Banco: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label>Abreviatura: <span class="text-red-50">*</span> </label>
+                            <input type="number" class="form-control" min="0" max="100">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                      <button type="button" class="btn btn-success"> Guardar</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
+                      </div>
+                    </form>
+                  </div>
+                  
+                </div>
               </div>
-              <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                </ol>
-              </nav>
             </div>
+ 
 
-          </div>
-        </div>
-        <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-        </div>
-      </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit
-          Hingarajiya</a>
-      </div>
-    </div>
-  </div>
-  <!-- js -->
-  <script src="vendors/scripts/core.js"></script>
-  <script src="vendors/scripts/script.min.js"></script>
-  <script src="vendors/scripts/process.js"></script>
-  <script src="vendors/scripts/layout-settings.js"></script>
-</body>
 
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>
