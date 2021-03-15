@@ -55,10 +55,10 @@
           <!-- Simple Datatable start -->
           <div class="card-box mb-30">
             <div class="pd-20">
-              <h4 class="text-blue h4">Tabla de Productos</h4>
+              <h4 class="text-blue h4">Tabla de Productos </h4>
             </div>
             <div class="pb-20">
-              <table class="table hover multiple-select-row data-table-export nowrap">
+              <table class="table hover data-table-export nowrap">
                 <thead>
                   <tr>
                     <th class="table-plus">N.º</th>
@@ -117,7 +117,8 @@
             </div>
           </div>
         </div>
-        <!-- Simple Datatable End -->
+
+        <!-- Modal -->
         <div class="card-box mb-30">
           <div class="pd-20">
             <h4 class="text-blue h4">Registrar Producto</h4>
@@ -199,6 +200,7 @@
             </form>
           </div>
         </div>
+        <!-- Fin Modal -->
       </div>
       <!-- Inicio de footer -->
       <?php require("partes/parteFooter.php"); ?>
@@ -226,7 +228,6 @@
   <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
   <!-- Datatable Setting js -->
   <script src="vendors/scripts/datatable-setting.js"></script>
-  </script>
 </body>
 </body>
 
