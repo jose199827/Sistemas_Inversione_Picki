@@ -67,18 +67,15 @@
         <h4 class="weight-600 font-18 pb-10">Icono de menú desplegable</h4>
         <div class="sidebar-radio-group pb-10 mb-10">
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-1" checked="">
+            <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-1" checked="">
             <label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-2">
+            <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-2">
             <label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-3">
+            <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-3">
             <label class="custom-control-label" for="sidebaricon-3"><i class="fa fa-angle-double-right"></i></label>
           </div>
         </div>
@@ -86,34 +83,27 @@
         <h4 class="weight-600 font-18 pb-10">Icono de lista de menú</h4>
         <div class="sidebar-radio-group pb-30 mb-10">
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-1" checked="">
+            <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input" value="icon-list-style-1" checked="">
             <label class="custom-control-label" for="sidebariconlist-1"><i class="ion-minus-round"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-2">
-            <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o"
-                aria-hidden="true"></i></label>
+            <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input" value="icon-list-style-2">
+            <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o" aria-hidden="true"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-3">
+            <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input" value="icon-list-style-3">
             <label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-4" checked="">
+            <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input" value="icon-list-style-4" checked="">
             <label class="custom-control-label" for="sidebariconlist-4"><i class="icon-copy dw dw-next-2"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-5">
+            <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input" value="icon-list-style-5">
             <label class="custom-control-label" for="sidebariconlist-5"><i class="dw dw-fast-forward-1"></i></label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-6">
+            <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input" value="icon-list-style-6">
             <label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
           </div>
         </div>
@@ -147,14 +137,10 @@
             </a>
           </li>
           <!-- Menu Facturación -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-invoice"></span><span class="mtext">Facturación</span>
+          <li>
+            <a href="facturacion.php" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-house1"></span><span class="mtext">Facturación</span>
             </a>
-            <ul class="submenu">
-              <li><a href="basic-table.html">Basic Tables</a></li>
-              <li><a href="datatable.html">DataTables</a></li>
-            </ul>
           </li>
           <!-- Menu Clientes -->
           <li class="dropdown">
@@ -173,13 +159,19 @@
               <span class="micon dw dw-truck"></span><span class="mtext">Proveedores</span>
             </a>
             <ul class="submenu">
-              <li><a href="form-basic.html">Form Basic</a></li>
-              <li><a href="advanced-components.html">Advanced Components</a></li>
-              <li><a href="form-wizard.html">Form Wizard</a></li>
-              <li><a href="html5-editor.html">HTML5 Editor</a></li>
-              <li><a href="form-pickers.html">Form Pickers</a></li>
-              <li><a href="image-cropper.html">Image Cropper</a></li>
-              <li><a href="image-dropzone.html">Image Dropzone</a></li>
+              <li><a href="TablaProveedores.php">Proveedores</a></li>
+              <li><a href="AddProveedores.php">Agregar Proveedor</a></li>
+            </ul>
+          </li>
+          <!-- Menu Empleados -->
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-id-card1"></span><span class="mtext">Empleados</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="empleados.php">Empleados</a></li>
+              <li><a href="agregar_empleado.php">Agregar Empleado</a></li>
+              <li><a href="perfil_empleado.php">Perfil Empleado</a></li>
             </ul>
           </li>
           <!-- Menu Usuarios -->
@@ -188,7 +180,7 @@
               <span class="micon dw dw-id-card1"></span><span class="mtext">Usuarios</span>
             </a>
             <ul class="submenu">
-              <li><a href="basic-table.html">Basic Tables</a></li>
+              <li><a href="basic-table.html">empleados.php</a></li>
               <li><a href="datatable.html">DataTables</a></li>
             </ul>
           </li>
@@ -199,8 +191,8 @@
 
             </a>
             <ul class="submenu">
-              <li><a href="basic-table.html">Productos</a></li>
-              <li><a href="datatable.html">DataTables</a></li>
+              <li><a href="Inventario.php">Inventario</a></li>
+              <li><a href="productos.php">Agregar Producto</a></li>
             </ul>
           </li>
           <!-- Menu Reportes -->
@@ -215,7 +207,7 @@
               <span class="micon dw dw-settings2"></span><span class="mtext">Configuración</span>
             </a>
             <ul class="submenu">
-              <li><a href="basic-table.html">Basic Tables</a></li>
+              <li><a href="confiProducto.php">Configuracion de Productos</a></li>
               <li><a href="datatable.html">DataTables</a></li>
             </ul>
           </li>
