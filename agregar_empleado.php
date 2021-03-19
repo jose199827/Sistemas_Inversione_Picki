@@ -51,7 +51,7 @@
 					</div>
 					<div class="wizard-content">
 						<form class="tab-wizard wizard-circle wizard">
-             
+            
 							<h5>Información Personal</h5>
 							<section>
 								<div class="row">
@@ -184,22 +184,59 @@
 							<!-- Step 4 -->
 							<h5>Usuario</h5>
 							<section>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="usuario">Nombre de Usuario: </label>
-                      <input type="text" class="form-control form-control-lg" id="usuario">
-                    </div>                
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="password">Password: </label>
-                      <input type="text" class="form-control form-control-lg" id="password">
-                    </div>   
-                  </div>
-                </div>
-               
-							 
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label for="usuario">Nombre de Usuario: </label>
+                       <input type="text" class="form-control form-control-lg" id="usuario">
+                     </div>                
+                   </div>
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label for="password">Password: </label>
+                       <input type="text" class="form-control form-control-lg" id="password">
+                     </div>   
+                   </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="pregunta1">Preguntas de Seguridad:</label>
+                         <select class="form-control form-control-lg" id="genero" name="pregunta1">
+                           <option></option>
+                           <option>Nombre de tu mascota de la infancia</option>
+                           <option>Masculino</option>
+                           <option>Otro</option>
+                         </select>
+                       </div> 
+                     </div>
+                    
+                     <div class="col-md-6">
+                        <div class="form-group">
+                          </br>
+                            <input type="text" class="form-control form-control-lg" id="password">
+                         </div>   
+                     </div>
+                   </div>	 
+                   <div class="row">
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="pregunta1"></label>
+                         <select class="form-control form-control-lg" id="genero" name="pregunta1">
+                           <option></option>
+                           <option>Nombre de tu mascota de la infancia</option>
+                           <option>Masculino</option>
+                           <option>Otro</option>
+                         </select>
+                       </div> 
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="pregunta1"></label>
+                            <input type="text" class="form-control form-control-lg" id="password">
+                         </div>   
+                     </div>
+                   </div>	 
 							</section>
 						</form>
 					</div>
