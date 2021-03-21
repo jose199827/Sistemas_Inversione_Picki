@@ -2,10 +2,6 @@
 <html>
 
 <head>
-  <!-- Basic Page Info -->
-  <meta charset="utf-8">
-  <title>Inversiones Picky</title>
-
   <!-- Site favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
@@ -15,13 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-  <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
 
@@ -29,7 +23,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'UA-119386393-1');
@@ -258,83 +252,108 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="clientes.php">Clientes</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Tabla Clientes</li>
+									<li class="breadcrumb-item active" aria-current="page">Agregar Clientes</li>
 								</ol>
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
-              <button type="button" class="btn btn-primary btn-lg" href="adjclientes.html">Agregar Clientes</button>
+
+              <a href="Tablacontrol_clientes.php"><input type="button" class="btn btn-primary btn-lg" value="Ver Clientes"></a>
                     
   							</div>
   						</div>
             </div>
 
 					<!-- EMPIEZA TABLA -->
-					<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Tabla Control Clientes</h4>
-					</div>
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">Núm</th>
-									<th>ID CLiente</th>
-									<th>Empresa</th>
-									<th>RTN Empresa</th>
-									<th>ID Tipo Cliente</th>
-									<th>Usr Registro</th>
-									<th class="datatable-nosort">Acción</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									</td>
-									<td>25</td>
-									<td>Global IT</td>
-									<td>0801199872515815 </td>
-									<td>12654</td>
-									<td>F365DF6</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> Ver</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Eliminar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="table-plus">2</td>
-									<td>30</td>
-									<td>M&L TEC</td>
-									<td>071519762365847 </td>
-									<td>32980</td>
-									<td>ER63218</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-            
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+					
+  <div class="mobile-menu-overlay"></div>
+
+  <div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+      
+
+        <div class="pd-20 card-box mb-30">
+          <div class="clearfix">
+            <h4 class="text-blue h4">Agregar nuevo proveedor</h4>
+          </div>
+          <div class="wizard-content">
+            <form class="tab-wizard wizard-circle wizard">
+              <h5>Banco</h5>
+              <section>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label >Nombre del Banco:</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label >Abreviatura :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label >Numero de Cuenta :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                
+              </section>
+              <!-- Step 2 -->
+              <h5>Personas</h5>
+              <section>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nombre del Contacto :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nombre de la empresa :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>RTN de la empresa :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- Step 3 -->
+              <h5>Informacion</h5>
+              <section>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Telefono :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Direccion:</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Correo Electronico :</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
