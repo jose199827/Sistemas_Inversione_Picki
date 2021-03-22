@@ -3,7 +3,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Facturacion</title>
+	<title>Agregar Proveedores</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -18,7 +18,9 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -416,7 +418,7 @@
 					</li>
 					<li>
 						<a href="invoice.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-invoice"></span><span class="mtext">Facturacion</span>
+							<span class="micon dw dw-invoice"></span><span class="mtext">Invoice</span>
 						</a>
 					</li>
 					<li>
@@ -450,125 +452,96 @@
 
 	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
-			<div class="min-height-200px">
-				<div class="page-header">
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Form</h4>
-							</div>
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Form</li>
-								</ol>
-							</nav>
-						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
-								<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-									January 2018
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">Export List</a>
-									<a class="dropdown-item" href="#">Policies</a>
-									<a class="dropdown-item" href="#">View Assets</a>
+			
+
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<h4 class="text-blue h4">Agregar nuevo proveedor</h4>
+					</div>
+					<div class="wizard-content">
+						<form class="tab-wizard wizard-circle wizard">
+							<h5>Banco</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label >Nombre del Banco:</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label >Abreviatura :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								<div class="col-md-6">
+										<div class="form-group">
+											<label >Numero de Cuenta :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
+								
+							</section>
+							<!-- Step 2 -->
+							<h5>Personas</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre del Contacto :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre de la empresa :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>RTN de la empresa :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- Step 3 -->
+							<h5>Informacion</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Telefono :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Direccion:</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Correo Electronico :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</section>
+						</form>
 					</div>
 				</div>
-				<div class="invoice-wrap">
-					<div class="card-box mb-30">
-						<div class="card-body">
-    <h5 class="card-title">Nueva factura</h5>
-    <p class="card-text"></p>
-    <h3>Inversiones Picky<span class="label label-default"></span></h3>
-     <h6>David Ricardo Peralta Espinoza<span class="label label-default"></span></h6>
-     <h6>Residencial Bella Oriente, primera avenida casa 4402 Bloque D, Distrito Central<span class="label label-default"></span></h6>
-     <h6>Cel:33236075, correo:dape04@yahoo.com<span class="label label-default"></span></h6>  
-     <h5 align="left">FACTURA<span class="label label-default"></span></h5>
-     <h6 align="right">RTN:08011992189181<span class="label label-default"></span></h6>
-     <label>Fecha</label>
-     <div class="form-group row">
-     <div class="col-10">
-     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-    </div>
-    </div>
-     <p></p>
-     <label>Cliente</label>
-     <div class="input-group mb-3">
-     <input type="text" class="form-control" placeholder="seleccione un usuario" aria-label="Text input with dropdown button">
-   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar</button>
-     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Jose pineda</a></li>
-      <li><a class="dropdown-item" href="#">Alex montoya</a></li>
-       <li><a class="dropdown-item" href="#">Luis moran </a></li>
-     </ul>
-     </div>
-     <label>N. de Factura</label>
-     <input type="text" id="number" class="textInput number" data-bind="number" maxlength="15" placeholder="Ejem:0002">
-     <label>Rango CAI</label>
-     <input type="text" id="number" class="textInput number" data-bind="number" maxlength="15" placeholder="Ejem:0000-0000-0021">
-     <p></p>
-     <label>Producto</label>
-     <div class="input-group mb-3">
-     <input type="text" class="form-control" placeholder="seleccione un usuario" aria-label="Text input with dropdown button">
-   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar</button>
-     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Jose pineda</a></li>
-      <li><a class="dropdown-item" href="#">Alex montoya</a></li>
-       <li><a class="dropdown-item" href="#">Luis moran </a></li>
-     </ul>
-     </div>
-      <label>cantidad</label>
-     <form class="form-inline">
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-    <option selected>1</option>
-    <option value="1">2</option>
-    <option value="2">3</option>
-    <option value="3">4</option>
-  </select>
-  <label for="exampleFormControlTextarea2">Descripcion</label>
-  <textarea class="description textarea-small autogrow" maxlength="1500" rows="30" data-bind="description" style="height: 42px;"></textarea>
-   <label>Descuento</label>
-   <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:20%">
-   <label>Precio</label>
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:700">
-   <label>Total</label>
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:700">
-   <label>ISV</label>
-   <select class="custom-select">
-  <option selected>ISV</option>
-  <option value="1">15%</option>
-  <option value="2">18%</option>
-    </select>
-    <p></p>
-    <p></p>
-    <label>Importe</label><p></p>
-    <input type="text" id="Total" class="textInput number" data-bind="number" maxlength="10" readonly>
-    <div class="form-group">
-  <label for="exampleFormControlTextarea2">Descripcion</label>
- <textarea class="description textarea-small autogrow" maxlength="1500" rows="30" data-bind="description" style="height: 42px;"></textarea>
-   <button class="btn btn-primary" type="button">Añadir producto</button>
-    <p></p>
-    </div>
-     
- </div>
-  </div>
-  </div>
-</div>
-				</div>
+
+
+
+				<!-- success Popup html End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				Inversiones picky<a href="https://github.com/dropways" target="_blank"></a>
+				Inversiones Picki 2021
 			</div>
 		</div>
 	</div>
@@ -577,5 +550,7 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="vendors/scripts/steps-setting.js"></script>
 </body>
 </html>

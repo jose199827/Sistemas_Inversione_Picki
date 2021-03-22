@@ -3,7 +3,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Facturacion</title>
+	<title>Proveedores</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -18,6 +18,8 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -416,7 +418,7 @@
 					</li>
 					<li>
 						<a href="invoice.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-invoice"></span><span class="mtext">Facturacion</span>
+							<span class="micon dw dw-invoice"></span><span class="mtext">Invoice</span>
 						</a>
 					</li>
 					<li>
@@ -445,137 +447,183 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+</div>
 	<div class="mobile-menu-overlay"></div>
-
 	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
-			<div class="min-height-200px">
-				<div class="page-header">
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Form</h4>
-							</div>
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Form</li>
-								</ol>
-							</nav>
-						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
-								<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-									January 2018
-								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">Export List</a>
-									<a class="dropdown-item" href="#">Policies</a>
-									<a class="dropdown-item" href="#">View Assets</a>
-								</div>
-							</div>
-						</div>
+					<div class="page-header d-flex justify-content-between align-items-center">
+          <h4 class="text-blue h4">Proveedores</h4>
+          <div class="pd-20">				
+             <div class="pull-right">
+               <a href="AddProveedores.html"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
+				  	 </div>
+				  	</div>
+        </div>
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<div class="row">
+                </div>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">N.°</th>
+									<th>Nombre Empresa</th>
+									<th>Banco</th>
+									<th>#Cuenta</th>
+									<th>RTN</th>
+									<th>Contacto</th>
+									<th>Telefono</th>
+									<th class="datatable-nosort">Acciones</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td class="table-plus">1</td>
+									<td>Adidas</td>
+									<td>BAC</td>
+									<td>45894722</td>
+									<td>080119879921825</td>
+									<td>Leonardo Scartino</td>
+									<td>2220-6465</td>
+									<td>
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+
+                            </div>
+
+                          </div>
+                      </td>
+								</tr>
+								<tr>
+									<td class="table-plus">2</td>
+									<td>Victoria Secret</td>
+									<td>Occidente</td>
+									<td>236598952</td>
+									<td>080129421652534</td>
+									<td>Martha Pereira</td>
+									<td>2220-7898</td>
+									<td>
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                          </div>
+                      </td>
+								</tr>
+								<tr>
+									<td class="table-plus">3</td>
+									<td>Bayern</td>	
+									<td>Ficohsa</td>
+									<td>20000475283</td>
+									<td>080119878525126</td>
+									<td>Mario Zelaya</td>
+									<td>2123-5688</td>
+									<td>
+
+									 <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                          </div>
+                      </td>
+								</tr>
+
+							</tbody>
+						</table>
+
 					</div>
+						<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1-10 of 12 entries</div>
 				</div>
-				<div class="invoice-wrap">
-					<div class="card-box mb-30">
-						<div class="card-body">
-    <h5 class="card-title">Nueva factura</h5>
-    <p class="card-text"></p>
-    <h3>Inversiones Picky<span class="label label-default"></span></h3>
-     <h6>David Ricardo Peralta Espinoza<span class="label label-default"></span></h6>
-     <h6>Residencial Bella Oriente, primera avenida casa 4402 Bloque D, Distrito Central<span class="label label-default"></span></h6>
-     <h6>Cel:33236075, correo:dape04@yahoo.com<span class="label label-default"></span></h6>  
-     <h5 align="left">FACTURA<span class="label label-default"></span></h5>
-     <h6 align="right">RTN:08011992189181<span class="label label-default"></span></h6>
-     <label>Fecha</label>
-     <div class="form-group row">
-     <div class="col-10">
-     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-    </div>
-    </div>
-     <p></p>
-     <label>Cliente</label>
-     <div class="input-group mb-3">
-     <input type="text" class="form-control" placeholder="seleccione un usuario" aria-label="Text input with dropdown button">
-   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar</button>
-     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Jose pineda</a></li>
-      <li><a class="dropdown-item" href="#">Alex montoya</a></li>
-       <li><a class="dropdown-item" href="#">Luis moran </a></li>
-     </ul>
-     </div>
-     <label>N. de Factura</label>
-     <input type="text" id="number" class="textInput number" data-bind="number" maxlength="15" placeholder="Ejem:0002">
-     <label>Rango CAI</label>
-     <input type="text" id="number" class="textInput number" data-bind="number" maxlength="15" placeholder="Ejem:0000-0000-0021">
-     <p></p>
-     <label>Producto</label>
-     <div class="input-group mb-3">
-     <input type="text" class="form-control" placeholder="seleccione un usuario" aria-label="Text input with dropdown button">
-   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar</button>
-     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Jose pineda</a></li>
-      <li><a class="dropdown-item" href="#">Alex montoya</a></li>
-       <li><a class="dropdown-item" href="#">Luis moran </a></li>
-     </ul>
-     </div>
-      <label>cantidad</label>
-     <form class="form-inline">
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-    <option selected>1</option>
-    <option value="1">2</option>
-    <option value="2">3</option>
-    <option value="3">4</option>
-  </select>
-  <label for="exampleFormControlTextarea2">Descripcion</label>
-  <textarea class="description textarea-small autogrow" maxlength="1500" rows="30" data-bind="description" style="height: 42px;"></textarea>
-   <label>Descuento</label>
-   <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:20%">
-   <label>Precio</label>
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:700">
-   <label>Total</label>
-  <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
-   <form class="form-inline">
-   <input type="text" id="number" class="textInput number" data-bind="number" maxlength="10" placeholder="Ejem:700">
-   <label>ISV</label>
-   <select class="custom-select">
-  <option selected>ISV</option>
-  <option value="1">15%</option>
-  <option value="2">18%</option>
-    </select>
-    <p></p>
-    <p></p>
-    <label>Importe</label><p></p>
-    <input type="text" id="Total" class="textInput number" data-bind="number" maxlength="10" readonly>
-    <div class="form-group">
-  <label for="exampleFormControlTextarea2">Descripcion</label>
- <textarea class="description textarea-small autogrow" maxlength="1500" rows="30" data-bind="description" style="height: 42px;"></textarea>
-   <button class="btn btn-primary" type="button">Añadir producto</button>
-    <p></p>
-    </div>
-     
- </div>
-  </div>
-  </div>
-</div>
-				</div>
+				<!-- Export Datatable End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				Inversiones picky<a href="https://github.com/dropways" target="_blank"></a>
+				Inversiones Picki 2021
 			</div>
 		</div>
+
+
+            <div class="modal fade" id="small-modaladdproveedores" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">Registrar Proveedores</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                          <!-- Nombre del producto -->
+                          <div class="form-group">
+                            <label>Nombre de la empresa: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label>Banco: <span class="text-red-50">*</span> </label>
+                            <input type="number" class="form-control" min="0" max="100">
+                          </div>
+                          <div class="form-group">
+                            <label>#Cuenta: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>                          <div class="form-group">
+                            <label>RTN: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>                          <div class="form-group">
+                            <label>Contacto: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>                          <div class="form-group">
+                            <label>Telefono: <span class="text-red-50">*</span> </label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
 	</div>
 	<!-- js -->
 	<script src="vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-</body>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>
