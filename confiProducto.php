@@ -25,6 +25,19 @@
   <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+  <style>
+    .error {
+      background-color: #ff9184;
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    .correcto {
+      background-color: #a0dea7;
+      font-size: 12px;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,6 +61,7 @@
               </nav>
             </div>
             <div class="col-6 text-right">
+
               <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                   Agregar
@@ -383,19 +397,41 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form action="confiProducto.php" method="POST">
+                  <?php
+                  if (isset($_POST['marca'])) {
+                    $marca = $_POST['marca'];
+                    $campos = array();
+                    if ($marca == "") {
+                      array_push($campos, "El campo de marca no puede ser vacio.");
+                    }
+                    if (strlen($marca) > 50) {
+                      array_push($campos, "El campo de marca debe de ser menor de 50 caracteres.");
+                    }
+                    if (count($campos) > 0) {
+                      echo "<div class='error'>";
+                      for ($i = 0; $i < count($campos); $i++) {
+                        echo "<li>" . $campos[$i] . "</li>";
+                      }
+                    } else {
+                      echo "<div class='correcto'>Datos Correctos";
+                    }
+                    echo "</div>";
+                  }
+                  ?>
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
                         <label>Marca: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="marca" class="form-control">
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -521,7 +557,6 @@
         <!-- Fin de footer -->
       </div>
     </div>
-
     <!-- js -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
