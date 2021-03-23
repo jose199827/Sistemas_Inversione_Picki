@@ -37,46 +37,42 @@
 </head>
 
 <body>
-   <!-- Parte del menu principal -->
-  <?php require("partes/parteMenu.php"); ?>
-  <!-- Fin Parte del menu principal -->
 
+   <!-- Parte del menu principal -->
+   <?php require("partes/parteMenu.php"); ?>
+  <!-- Fin Parte del menu principal -->
 
   <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
       <div class="min-height-200px">
-        <div class="page-header d-flex justify-content-between align-items-center">
+      <div class="page-header d-flex justify-content-between align-items-center">
 		  <div class="col-md-6 col-sm-12">
               <div class="title">
-                <h4>Empleados</h4>
+                <h4>Perfil Empleado</h4>
               </div>
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
                 </ol>
               </nav>
+              
             </div>
-          <div class="pd-20">				
-             <div class="pull-right">
-                 <a href="agregar_empleado.php"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
-			 </div>
-		 </div>
+            <div class="pull-right">
+               <a href="agregar_empleado.php"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
+				  	 </div>
         </div>
         <!--TABLA-->
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
         <div class="card-box mb-30">
             </br>    
               
-	            	<div class="pb-20">
-                        
-						<div class="pd-20">
-                             <h4 class="text-blue h4">Tabla de Empleados </h4>
-                       </div>
+					<div class="pb-20">
+          </br> 
 						<table class="table hover data-table-export nowrap">
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">N.º</th>
-                                    <th>Num. Identidad</th>
+                  <th>Num. Identidad</th>
 									<th>Nombre</th>
 									<th>Edad</th>
 									<th>Género</th>

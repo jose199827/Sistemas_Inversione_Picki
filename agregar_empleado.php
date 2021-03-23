@@ -33,6 +33,21 @@
 
     gtag('config', 'UA-119386393-1');
   </script>
+  <style>
+
+   .error{
+     background-color: #FF9185;
+     font-size: 12px;
+     padding: 10px;
+    }
+    .correcto{
+    background-color: #FF9185;
+    font-size: 12px;
+    padding: 10px;
+    }
+      
+  </style>
+
 </head>
 
 <body>
@@ -50,7 +65,62 @@
 						<h4 class="text-blue h4">Registrar Empleados</h4>
 					</div>
 					<div class="wizard-content">
-						<form class="tab-wizard wizard-circle wizard">
+						<form class="tab-wizard wizard-circle wizard" action="agregar_empleado.php" method="POST">
+              <?php
+                if (isset($_POST['nombre'])) {
+                  $nombre = $_POST['nombre'];
+                  $apellido = $_POST['apellido'];
+                  $identidad = $_POST['identidad'];
+                  $edad = $_POST['edad'];
+                  $nacimiento = $_POST['nacimiento'];
+                  $genero = $_POST['genero'];
+                  $correo = $_POST['correo'];
+                  $telefono = $_POST['telefono'];
+                  $direccion = $_POST['direccion'];
+                  $password = $_POST['password'];
+
+                  $campos = array();
+
+                  if ($nombre == "") {
+                    array_push($campos, "Nombre obligatorio");
+                  }
+                  if ($apellido == "") {
+                    array_push($campos, "Apellido obligatorio");
+                  }
+                 if ($identidad == "") {
+                   array_push($campos, "Núm. de Identidad obligatorio");
+                  } 
+                 if ($edad == "" || strlen($edad) < 6) {
+                   array_push($campos, "Edad obligatorio");
+                  } 
+                 if ($nacimiento == "") {
+                   array_push($campos, "Fecha de nacimiento obligatorio");
+                  } 
+                 if ($correo == "" || strops($correo, "@") === false) {
+                   array_push($campos, "Correo obligatorio");
+                  }
+                 if ($telefono == "") {
+                   array_push($campos, "Telefono obligatorio");
+                  } 
+                 if ($direccion == "") {
+                    array_push($campos, "Dirección obligatorio");
+                  } 
+                 if ($password == "" || strlen($password) < 6) {
+                   array_push($campos, "Campo obligatorio");
+                  }
+
+                  if (count($campos) > 0) {
+                   echo "<div class='error'>";
+                   for ($i=0; $i < count($campos) ; $i++) { 
+                     echo "<li>".$campos[$i]."</i>";
+                    }
+                  }else {
+                   echo "<div class='correcto'>
+                         Datos correctos";
+                  }
+                 echo "</div>";
+                }
+             ?>
             
 							<h5>Información Personal</h5>
 							<section>
@@ -58,13 +128,13 @@
 									<div class="col-md-6">		 
                     <div class="form-group">
                       <label for="nombre">Nombre:</label>
-                      <input class="form-control form-control-lg" type="text" id="nombre">
+                      <input class="form-control form-control-lg" type="text" id="nombre" name="nombre">
                   </div>
 									</div>
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="apellido">Apellido:</label>
-                      <input type="text" class="form-control form-control-lg" id="apellido">
+                      <input type="text" class="form-control form-control-lg" id="apellido" name="apellido">
                   </div>
 									</div>
 								</div>
@@ -72,13 +142,13 @@
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="identidad">Num. Identidad:</label>
-                      <input type="text" class="form-control form-control-lg" id="identidad">
+                      <input type="text" class="form-control form-control-lg" id="identidad" name="identidad">
                   </div>
 									</div>
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="edad">Edad:</label>
-                      <input type="number" value="" class="form-control form-control-lg" id="edad">
+                      <input type="number" value="" class="form-control form-control-lg" id="edad" name="edad">
                   </div>
 									</div>
 								</div>
@@ -86,13 +156,13 @@
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="nacimiento">Fecha de Nacimiento:</label>
-                      <input type="date" class="form-control form-control-lg" id="nacimiento">
+                      <input type="date" class="form-control form-control-lg" id="nacimiento" name="nacimiento">
                   </div>
 									</div>
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="genero">Género:</label>
-                      <select class="form-control form-control-lg" id="genero" name="sellist1">
+                      <select class="form-control form-control-lg" id="genero" name="genero">
                         <option></option>
                         <option>Femenino</option>
                         <option>Masculino</option>
@@ -109,19 +179,19 @@
 									<div class="col-md-6">
                     <div class="form-group">
                       <label for="correo">Correo Electrónico: </label>
-                      <input type="email" class="form-control form-control-lg" id="correo">
+                      <input type="email" class="form-control form-control-lg" id="correo" name="correo">
                   </div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
                       <label for="telefono">Teléfono: </label>
-                      <input type="text" class="form-control form-control-lg" id="telefono">
+                      <input type="text" class="form-control form-control-lg" id="telefono" name="telefono">
                     </div>
 									</div>
 									<div class="col-md-12">
                     <div class="form-group">                   
                       <label for="direccion">Dirección:</label>
-                      <textarea class="form-control" rows="5" id="direccion"></textarea>
+                      <textarea class="form-control" rows="5" id="direccion" name="direccion"></textarea>
                   </div>
 									</div>
 								</div>
@@ -194,7 +264,7 @@
                    <div class="col-md-6">
                      <div class="form-group">
                        <label for="password">Password: </label>
-                       <input type="text" class="form-control form-control-lg" id="password">
+                       <input type="text" class="form-control form-control-lg" id="password" name="password">
                      </div>   
                    </div>
                  </div>
