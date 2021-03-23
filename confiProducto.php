@@ -25,6 +25,19 @@
   <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+  <style>
+    .error {
+      background-color: #ff9184;
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    .correcto {
+      background-color: #a0dea7;
+      font-size: 12px;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,6 +61,7 @@
               </nav>
             </div>
             <div class="col-6 text-right">
+
               <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                   Agregar
@@ -383,19 +397,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form action="confiProducto.php" id="formMarca" name="formMarca" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
                         <label>Marca: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" id="marca" name="marca" class="form-control" required>
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -410,19 +425,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="fromCategoria" name="fromCategoria">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
                         <label>Categorias: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" id="categoria" name="categoria" class="form-control" required>
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -437,19 +453,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="formGrupo" name="formGrupo">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
                         <label>Grupo: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="grupo" name="grupo" required>
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -464,19 +481,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="formMedida" name="formMedida">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
                         <label>Unidad: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="unidad" name="unidad">
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -505,10 +523,11 @@
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -521,7 +540,6 @@
         <!-- Fin de footer -->
       </div>
     </div>
-
     <!-- js -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
@@ -540,8 +558,14 @@
     <script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
     <script src="src/plugins/datatables/js/pdfmake.min.js"></script>
     <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+    <!-- add sweet alert js & css in footer -->
+    <link rel="stylesheet" type="text/css" href="src/plugins/sweetalert2/sweetalert2.css">
+    <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
     <!-- Datatable Setting js -->
     <script src="vendors/scripts/datatable-setting.js"></script>
+    <script src="vendors/scripts/validacion.js"></script>
     </script>
 </body>
 </body>
