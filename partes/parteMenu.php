@@ -154,16 +154,11 @@
             </ul>
           </li>
           <!-- Menu Proveedores -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+          <li>
+            <a href="TablaProveedores.php" class="dropdown-toggle no-arrow">
               <span class="micon dw dw-truck"></span><span class="mtext">Proveedores</span>
             </a>
-            <ul class="submenu">
-              <li><a href="TablaProveedores.php">Proveedores</a></li>
-              <li><a href="AddProveedores.php">Agregar Proveedor</a></li>
-            </ul>
-          </li>
-          <!-- Menu Empleados -->
+          </li>          <!-- Menu Empleados -->
           <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-id-card1"></span><span class="mtext">Empleados</span>
