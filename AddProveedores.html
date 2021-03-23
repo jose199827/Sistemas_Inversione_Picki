@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Bancos</title>
+	<title>Agregar Proveedores</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -18,9 +19,9 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
 	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -449,152 +450,108 @@
 		</div>
 	</div>
 	<div class="mobile-menu-overlay"></div>
+
 	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
-					<div class="page-header d-flex justify-content-between align-items-center">
-          <h4 class="text-blue h4">Bancos</h4>
-          <div class="pd-20">				
-             <div class="pull-right">
-               <a href="agregar_empleado.html"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
-				  	 </div>
-				  	</div>
-        </div>
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<div class="row">
-                </div>
-					<div class="pb-20">
-						
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">N.°</th>
-									<th>Nombre Banco</th>
-									<th >Abreviatura</th>
-									<th class="datatable-nosort">Acciones</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Bac Credomatic</td>
-									<td>BAC</td>
-									<td>
-									 <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-								</tr>
-								<tr>
-									<td class="table-plus">2</td>
-									<td>El Banco de Occidente C.A.</td>
-									<td>Ocidente</td>
+			
 
-									<td>
-									 <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-								</tr>
-								<tr>
-									<td class="table-plus">3</td>
-									<td>Grupo Financiero Ficohsa</td>	
-									<td>Ficohsa</td>
-									<td>
-									 <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-								</tr>
-
-							</tbody>
-						</table>
-					<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1-10 of 12 entries</div>
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<h4 class="text-blue h4">Agregar nuevo proveedor</h4>
 					</div>
-
+					<div class="wizard-content">
+						<form class="tab-wizard wizard-circle wizard">
+							<h5>Banco</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label >Nombre del Banco:</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label >Abreviatura :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								<div class="col-md-6">
+										<div class="form-group">
+											<label >Numero de Cuenta :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+								
+							</section>
+							<!-- Step 2 -->
+							<h5>Personas</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre del Contacto :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Nombre de la empresa :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>RTN de la empresa :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- Step 3 -->
+							<h5>Informacion</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Telefono :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Direccion:</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Correo Electronico :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</section>
+						</form>
+					</div>
 				</div>
-				<!-- Export Datatable End -->
+
+
+
+				<!-- success Popup html End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Inversiones Picki 2021
 			</div>
 		</div>
-
-		
-            <div class="modal fade" id="small-modaladdbanco" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">Registrar Banco</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <!-- Nombre del producto -->
-                          <div class="form-group">
-                            <label>Nombre del Banco: <span class="text-red-50">*</span> </label>
-                            <input type="text" class="form-control">
-                          </div>
-                          <div class="form-group">
-                            <label>Abreviatura: <span class="text-red-50">*</span> </label>
-                            <input type="number" class="form-control" min="0" max="100">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                      <button type="button" class="btn btn-success"> Guardar</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
-                      </div>
-                    </form>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
- 
-
-
 	</div>
 	<!-- js -->
 	<script src="vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+	<script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="vendors/scripts/steps-setting.js"></script>
+</body>
 </html>

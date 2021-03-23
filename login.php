@@ -1,26 +1,25 @@
 <?php
-include("conexion.php");
+include("abrir_conexion.php");
 session_start();
 if (isset($_SESSION['id_usuario'])){
-  header("Location: admin.php");
+  header("Location: login.php");
 }
 //login
 if (!empty($_POST)){
 $usuario = mysqli_real_escape_string($conexion,$_POST['user']);
 $password = mysqli_real_escape_string($conexion,$_POST['pass']);
-$password_encriptada = sha1($password);
-$sql = "SELECT idusuarios FROM usuarios
-         WHERE usuario = '$usuario' AND password = '$password_encriptada' ";
+$sql = "SELECT id_usuarios FROM usuario
+         WHERE nom_usuario = '$usuario' AND pass_usuario = '$password' ";
 $resultado = $conexion->query($sql);
 $rows = $resultado->num_rows;
 if ($rows > 0){
   $row = $resultado->fetch_assoc();
-  $_SESSION['id_usuario'] = $row["idusuarios"];
-  header("location: admin.php");
+  $_SESSION['id_usuario'] = $row["id_usuarios"];
+  header("location: index.php");
 }else{
   echo "<script>
        alert('Usuario o Password Incorrecto');
-       window.location = 'index.php';
+       window.location = 'login.php';
        </script>";
 }
 
