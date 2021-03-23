@@ -509,17 +509,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="formImpuestos" name="formImpuestos">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <!-- Nombre del producto -->
                       <div class="form-group">
                         <label>Nombre de Impuesto: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="nombreImpuesto" name="nombreImpuesto">
                       </div>
                       <div class="form-group">
                         <label>Porcentaje Impuesto: <span class="text-red-50">*</span> </label>
-                        <input type="number" class="form-control" min="0" max="100">
+                        <input type="number" class="form-control" id="porcentajeImpuesto" name="porcentajeImpuesto" min="0" max="100">
                       </div>
                     </div>
                   </div>
@@ -558,6 +558,7 @@
     <script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
     <script src="src/plugins/datatables/js/pdfmake.min.js"></script>
     <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+
     <!-- add sweet alert js & css in footer -->
     <link rel="stylesheet" type="text/css" href="src/plugins/sweetalert2/sweetalert2.css">
     <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
