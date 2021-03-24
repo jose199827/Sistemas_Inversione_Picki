@@ -16,7 +16,7 @@ class MySQL
     try {
       $this->oConBD = new PDO("mysql:host=" . $this->ipBD, $this->usuarioBD, $this->passBD);
 
-      echo "Conexion exitosa";
+      echo "Conexion exitosa" . "\n" ;
       return true;
     } catch (PDOException $e) {
       echo "Error al conectar a la base de datos: " . $e->getMessage() . "\n";

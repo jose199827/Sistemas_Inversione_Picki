@@ -117,8 +117,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Modal -->
+        <!-- Simple Datatable End -->
         <div class="card-box mb-30">
           <div class="pd-20">
             <h4 class="text-blue h4">Registrar Producto</h4>
@@ -200,7 +199,6 @@
             </form>
           </div>
         </div>
-        <!-- Fin Modal -->
       </div>
       <!-- Inicio de footer -->
       <?php require("partes/parteFooter.php"); ?>
@@ -228,6 +226,7 @@
   <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
   <!-- Datatable Setting js -->
   <script src="vendors/scripts/datatable-setting.js"></script>
+  </script>
 </body>
 </body>
 
