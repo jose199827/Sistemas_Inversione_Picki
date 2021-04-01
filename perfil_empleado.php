@@ -1,3 +1,7 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
 <!DOCTYPE html>
 <html>
 
@@ -47,6 +51,30 @@
 </head>
 
 <body>
+
+  <?php   
+      //*************PAGINADOR**************** */
+     $tamano_pagina = 5;
+     if (isset($_GET["pagina"])) {
+         if ($_GET["pagina"] == 1) {
+            header("Location:http://localhost:8080/Sistemas_Inversione_Picki/perfil_empleado.php");
+         } else {
+            $pagina = $_GET["pagina"];
+         }     
+        } else {
+          $pagina = 1;
+        }
+
+     $empezar_desde = ($pagina - 1) * $tamano_pagina;
+     $sql_total = "SELECT * FROM `empleados`";
+     $resultado = $conexion->prepare($sql_total);
+     $resultado->execute(array());
+     $num_filas = $resultado->rowCount();
+     $total_paginas = ceil($num_filas / $tamano_pagina);
+     //************END PAGINADOR***************** */
+     //************Select Para personas***************** */
+     $registro_empleados = $conexion->query("SELECT `id_persona`,`num_id_persona`, `nom_persona`, `ape_persona`,`eda_persona`, `gen_persona` FROM `personas` WHERE `id_persona` IN (SELECT `id_persona` FROM `empleados`) LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+   ?>
   <!-- Parte del menu principal -->
   <?php require("partes/parteMenu.php"); ?>
   <!-- Fin Parte del menu principal -->
@@ -184,60 +212,7 @@
                                 <div class="tab-pane fade height-100-p" id="Editar" role="tabpanel">
                                     <div class="profile-setting">
                                         <form  action="perfil_empleado.php" method="POST">
-                                           <?php
-                                                if (isset($_POST['nombre'])) {
-                                                 $nombre = $_POST['nombre'];
-                                                 $apellido = $_POST['apellido'];
-                                                 $identidad = $_POST['identidad'];
-                                                 $edad = $_POST['edad'];
-                                                 $nacimiento = $_POST['nacimiento'];
-                                                 $genero = $_POST['genero'];
-                                                 $correo = $_POST['correo'];
-                                                 $telefono = $_POST['telefono'];
-                                                 $direccion = $_POST['direccion'];
-                                                 $password = $_POST['password'];
-
-                                                 $campos = array();
-
-                                                 if ($nombre == "") {
-                                                     array_push($campos, "Nombre obligatorio");
-                                                   }
-                                                 if ($apellido == "") {
-                                                     array_push($campos, "Apellido obligatorio");
-                                                    }
-                                                 if ($identidad == "") {
-                                                     array_push($campos, "Núm. de Identidad obligatorio");
-                                                    } 
-                                                 if ($edad == "" || strlen($edad) < 6) {
-                                                     array_push($campos, "Edad obligatorio");
-                                                    } 
-                                                 if ($nacimiento == "") {
-                                                     array_push($campos, "Fecha de nacimiento obligatorio");
-                                                    } 
-                                                 if ($correo == "" || strops($correo, "@") === false) {
-                                                     array_push($campos, "Correo obligatorio");
-                                                    }
-                                                 if ($telefono == "") {
-                                                        array_push($campos, "Telefono obligatorio");
-                                                    } 
-                                                 if ($direccion == "") {
-                                                     array_push($campos, "Dirección obligatorio");
-                                                    } 
-                                                 if ($password == "" || strlen($password) < 6) {
-                                                     array_push($campos, "Campo obligatorio");
-                                                   }
-                                                 if (count($campos) > 0) {
-                                                     echo "<div class='error'>";
-                                                     for ($i=0; $i < count($campos) ; $i++) { 
-                                                         echo "<li>".$campos[$i]."</i>";
-                                                        }
-                                                    }else {
-                                                     echo "<div class='correcto'>
-                                                     Datos correctos";
-                                                    }
-                                                  echo "</div>";
-                                                }
-                                          ?>
+                                         
                                             <ul class="profile-edit-list row">
                                                 <!--Tabla Personas-->
                                                 <li class="weight-500 col-md-6">
