@@ -1,3 +1,8 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -34,9 +39,37 @@
 
     gtag('config', 'UA-119386393-1');
   </script>
-</head>
+</head> 
 
 <body>
+  <?php
+    
+	
+    //*************PAGINADOR**************** */
+    $tamano_pagina = 5;
+    if (isset($_GET["pagina"])) {
+        if ($_GET["pagina"] == 1) {
+            header("Location:http://localhost:8080/Sistemas_Inversione_Picki/empleados.php");
+        } else {
+            $pagina = $_GET["pagina"];
+        }
+
+        
+    } else {
+
+        $pagina = 1;
+    }
+
+    $empezar_desde = ($pagina - 1) * $tamano_pagina;
+    $sql_total = "SELECT * FROM `personas`";
+    $resultado = $conexion->prepare($sql_total);
+    $resultado->execute(array());
+    $num_filas = $resultado->rowCount();
+    $total_paginas = ceil($num_filas / $tamano_pagina);
+    //************END PAGINADOR***************** */
+    //************Select Para personas***************** */
+    $registro_personas = $conexion->query("SELECT `id_persona`,`num_id_persona`, `nom_persona`, `ape_persona`,`eda_persona`, `gen_persona` FROM `personas` WHERE `id_persona` IN (SELECT `id_persona` FROM `empleados`) LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  ?>
 
    <!-- Parte del menu principal -->
    <?php require("partes/parteMenu.php"); ?>
@@ -72,7 +105,7 @@
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">N.º</th>
-                  <th>Num. Identidad</th>
+                                    <th>Num. Identidad</th>
 									<th>Nombre</th>
 									<th>Edad</th>
 									<th>Género</th>
@@ -80,12 +113,23 @@
 								</tr>
 							</thead>
 							<tbody>
+							  <?php foreach ($registro_personas as $personas) : ?>
 								<tr>
-									<td class="table-plus">1</td>
-									<td>0801-1998-20187</td>
-									<td>Gloria F. Mead</td>
-									<td>23</td>
-									<td>F</td>
+									<td class="table-plus">
+								     	<?php echo $personas->id_persona ?>
+									</td>
+									<td>
+									   <?php echo $personas->num_id_persona ?>
+									</td>
+									<td>
+									  <?php echo $personas->nom_persona . " " . $personas->ape_persona ?>
+									</td>
+									<td>
+									  <?php echo $personas->eda_persona ?>
+									</td>
+									<td>
+									  <?php echo $personas->gen_persona ?>
+									</td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -99,25 +143,8 @@
 										</div>
 									</td>
 								</tr>
-								<tr>
-									<td class="table-plus">2</td>
-									<td>0801-1999-20187</td>
-									<td>Carlos F. Mead</td>
-									<td>22</td>
-									<td>M</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="perfil_empleado.php"><i class="dw dw-eye"></i> Vista</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Eliminar</a>
-											</div>
-										</div>
-									</td>
-								</tr>					
+								
+								<?php endforeach; ?>					
 							</tbody>
 						</table>
 					</div>
