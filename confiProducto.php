@@ -1,3 +1,7 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
 <!DOCTYPE html>
 <html>
 
@@ -41,6 +45,40 @@
 </head>
 
 <body>
+<!--**********SELECT DE LA BASE DE DATOS**********-->
+<?php
+  $tamano_pagina = 5;
+  if (isset($_GET["pagina"])) {
+      if ($_GET["pagina"] == 1) {
+          header("Location:http://localhost/Sistemas_Inversione_Picki/confiProducto.php");
+      } else {
+          $pagina = $_GET["pagina"];
+      }
+
+      
+  } else {
+
+      $pagina = 1;
+  }
+  $empezar_desde = ($pagina - 1) * $tamano_pagina;
+  $sql_total = "SELECT * FROM `marcas`";
+  $sql_total = "SELECT * FROM `categorias`";
+  $sql_total = "SELECT * FROM `grupos`";
+  $sql_total = "SELECT * FROM `unidades_medidas`";
+  $sql_total = "SELECT * FROM `tipos_impuestos`";
+  $resultado = $conexion->prepare($sql_total);
+  $resultado->execute(array());
+  $num_filas = $resultado->rowCount();
+  $total_paginas = ceil($num_filas / $tamano_pagina);
+  //************END PAGINADOR***************** */
+  //************Select Para personas***************** */
+  $registro_marcas = $conexion->query("SELECT * FROM `marcas` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_categorias = $conexion->query("SELECT * FROM `categorias` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_grupos = $conexion->query("SELECT * FROM `grupos` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_unidades_medidas = $conexion->query("SELECT * FROM `unidades_medidas` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_impuestos = $conexion->query("SELECT * FROM `tipos_impuestos` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  ?>
+
   <!-- Parte del menu principal -->
   <?php require("partes/parteMenu.php"); ?>
   <!-- Fin Parte del menu principal -->
@@ -84,6 +122,7 @@
         <!-- Inicio del Contenido -->
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
           <!-- Simple Datatable start -->
+          <!-- TABLA DE MARCAS-->
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
@@ -107,43 +146,30 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_marcas as $marcas) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
-                        <td>Samsung</td>
+                        <td class="table-plus"><?php echo $marcas->id_marca?></td>
+                        <td><?php echo $marcas->marca?></td>
                         <td>
                           <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                               <i class="dw dw-more"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> Vista</a>
+                              <a class="dropdown-item" href="bd/update_marca.php" id="<?php echo $marcas->id_marca?>"><i class="dw dw-edit2"></i> Editar</a>
+                              <a class="dropdown-item" href="bd/delete_marcas.php?id_marca=<?php echo $marcas->id_marca?>"><i class="dw dw-delete-3"></i>Eliminar</a>
                             </div>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td class="table-plus">2</td>
-                        <td>LG</td>
-                        <td>
-                          <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            <!--TABLE DE CATEGORIAS-->
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
                 <div class="pd-20">
@@ -167,10 +193,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_categorias as $categorias) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
+                        <td class="table-plus"><?php echo $categorias->id_categoria?></td>
                         <td>
-                          Hogar
+                        <?php echo $categorias->categoria?>
                         </td>
                         <td>
                           <div class="dropdown">
@@ -180,27 +207,12 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                              <a class="dropdown-item" href="bd/delete_categoria.php?id_categoria=<?php echo $categorias->id_categoria?>"><i class="dw dw-delete-3"></i>Eliminar</a>
                             </div>
                           </div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td class="table-plus">2</td>
-                        <td>Niños</td>
-                        <td>
-                          <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      </tr>                
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
@@ -210,6 +222,7 @@
         </div>
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
           <!-- Simple Datatable start -->
+          <!--TABLA DE GRUPOS -->
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
@@ -233,9 +246,10 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_grupos as $grupos) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
-                        <td>Samsung</td>
+                        <td class="table-plus"><?php echo $grupos->id_grupo?></td>
+                        <td><?php echo $grupos->grupo?></td>
                         <td>
                           <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -244,36 +258,21 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                              <a class="dropdown-item" href="bd/delete_grupos.php?id_grupo=<?php echo $grupos->id_grupo?>"><i class="dw dw-delete-3"></i> Delete</a>
                             </div>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td class="table-plus">2</td>
-                        <td>LG</td>
-                        <td>
-                          <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            <!--TABLA UNIDADES MEDIDAS-->
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
                 <div class="pd-20">
-
                   <div class="pd-20">
                     <div class="row">
                       <div class="col-6">
@@ -294,10 +293,11 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php foreach ($registro_unidades_medidas as $unidades_medidas) : ?>
                         <tr>
-                          <td class="table-plus">1</td>
+                          <td class="table-plus"><?php echo $unidades_medidas->id_uni_medida?></td>
                           <td>
-                            Caja
+                          <?php echo $unidades_medidas->uni_medida?>
                           </td>
                           <td>
                             <div class="dropdown">
@@ -307,27 +307,12 @@
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                 <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
                                 <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                <a class="dropdown-item" href="bd/delete_uni_medidas.php?id_uni_medida=<?php echo $unidades_medidas->id_uni_medida?>"><i class="dw dw-delete-3"></i> Delete</a>
                               </div>
                             </div>
                           </td>
                         </tr>
-                        <tr>
-                          <td class="table-plus">2</td>
-                          <td>Ml</td>
-                          <td>
-                            <div class="dropdown">
-                              <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
+                        <?php endforeach; ?>
                       </tbody>
                     </table>
                   </div>
@@ -337,7 +322,7 @@
           </div>
         </div>
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-          <!-- Simple Datatable start -->
+          <!-- TABLA DE IMPUESTOS -->
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
@@ -362,10 +347,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_impuestos as $impuestos) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
-                        <td>Impuesto Sobre la venta (15%)</td>
-                        <td>15</td>
+                        <td class="table-plus"><?php echo $impuestos->id_tip_impuestos?></td>
+                        <td><?php echo $impuestos->nom_isv?></td>
+                        <td><?php echo $impuestos->porcentaje?></td>
                         <td>
                           <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -374,17 +360,19 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                              <a class="dropdown-item" href="bd/delete_impuestos.php?id_tip_impuestos=<?php echo $impuestos->id_tip_impuestos?>"><i class="dw dw-delete-3"></i> Delete</a>
                             </div>
                           </div>
                         </td>
                       </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         <!-- Apartado de modales -->
@@ -397,12 +385,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form action="confiProducto.php" id="formMarca" name="formMarca" method="POST">
+                <form class="needs-validation" novalidate action="bd/insert_marcas.php" id="formMarca" name="formMarca" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
-                        <label>Marca: <span class="text-red-50">*</span> </label>
+                        <label for="marca">Marca: <span class="text-red-50">*</span> </label>
                         <input type="text" id="marca" name="marca" class="form-control" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
                       </div>
                     </div>
                   </div>
@@ -425,12 +416,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form id="fromCategoria" name="fromCategoria">
+                <form class="needs-validation" novalidate action="bd/insert_categoria.php" id="fromCategoria" name="fromCategoria" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
-                        <label>Categorias: <span class="text-red-50">*</span> </label>
+                        <label for="categoria">Categorias: <span class="text-red-50">*</span> </label>
                         <input type="text" id="categoria" name="categoria" class="form-control" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
                       </div>
                     </div>
                   </div>
@@ -453,12 +447,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form id="formGrupo" name="formGrupo">
+                <form class="needs-validation" novalidate action="bd/insert_grupos.php" id="formGrupo" name="formGrupo" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
-                        <label>Grupo: <span class="text-red-50">*</span> </label>
+                        <label for="grupo" >Grupo: <span class="text-red-50">*</span> </label>
                         <input type="text" class="form-control" id="grupo" name="grupo" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+
                       </div>
                     </div>
                   </div>
@@ -473,6 +471,7 @@
         </div>
 
         <!-- Modal de Unidad Medida -->
+        <!-- Modal de Unidad Medida -->
         <div class="modal fade" id="unidadMedida-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
@@ -481,12 +480,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form id="formMedida" name="formMedida">
+                <form class="needs-validation" novalidate id="formMedida" name="formMedida" action="bd/insert_uni_medidas.php" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <div class="form-group">
-                        <label>Unidad: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control" id="unidad" name="unidad">
+                        <label for="uni_medida">Unidad: <span class="text-red-50">*</span> </label>
+                        <input type="text" class="form-control" id="uni_medida" name="uni_medida" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
                       </div>
                     </div>
                   </div>
@@ -509,17 +511,25 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form id="formImpuestos" name="formImpuestos">
+                <form class="needs-validation" novalidate action="bd/insert_impuestos.php" id="formImpuesto" name="formImpuesto" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
                       <!-- Nombre del producto -->
                       <div class="form-group">
-                        <label>Nombre de Impuesto: <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control" id="nombreImpuesto" name="nombreImpuesto">
+                        <label for="nom_isv">Nombre de Impuesto: <span class="text-red-50">*</span> </label>
+                        <input type="text" id="nom_isv" name="nom_isv" class="form-control" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+
                       </div>
                       <div class="form-group">
-                        <label>Porcentaje Impuesto: <span class="text-red-50">*</span> </label>
-                        <input type="number" class="form-control" id="porcentajeImpuesto" name="porcentajeImpuesto" min="0" max="100">
+                        <label for="porcentaje">Porcentaje Impuesto: <span class="text-red-50">*</span> </label>
+                        <input type="number" id="porcentaje" name="porcentaje" class="form-control" min="0" max="100" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, valores mayores a 0</div>
+
                       </div>
                     </div>
                   </div>
@@ -558,7 +568,6 @@
     <script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
     <script src="src/plugins/datatables/js/pdfmake.min.js"></script>
     <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-
     <!-- add sweet alert js & css in footer -->
     <link rel="stylesheet" type="text/css" href="src/plugins/sweetalert2/sweetalert2.css">
     <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
@@ -566,8 +575,8 @@
 
     <!-- Datatable Setting js -->
     <script src="vendors/scripts/datatable-setting.js"></script>
-    <script src="vendors/scripts/validacion.js"></script>
-    </script>
+    <script src="vendors/scripts/validaciones_modal.js"></script> 
+    
 </body>
 </body>
 

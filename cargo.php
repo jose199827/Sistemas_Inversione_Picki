@@ -1,3 +1,7 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
 <!DOCTYPE html>
 <html>
 
@@ -37,213 +41,38 @@
 </head>
 
 <body>
-  <!-- Inicio del Precaargador -->
-  <div class="pre-loader">
-    <div class="pre-loader-box">
-      <div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
-      <div class='loader-progress' id="progress_div">
-        <div class='bar' id='bar1'></div>
-      </div>
-      <div class='percent' id='percent1'>0%</div>
-      <div class="loading-text">
-        Cargando...
-      </div>
-    </div>
-  </div>
-  <!-- Fin del Precaargador -->
+<!--**********SELECT DE LA BASE DE DATOS**********-->
+<?php
+  $tamano_pagina = 5;
+  if (isset($_GET["pagina"])) {
+      if ($_GET["pagina"] == 1) {
+          header("Location:http://localhost/Sistemas_Inversione_Picki2/cargo.php");
+      } else {
+          $pagina = $_GET["pagina"];
+      }
 
-  <!-- Inicio del Menu Principal -->
-  <div class="header">
-    <div class="header-left">
-      <div class="menu-icon dw dw-menu"></div>
-    </div>
-    <div class="header-right">
-      <div class="dashboard-setting user-notification">
-        <div class="dropdown">
-          <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-            <i class="dw dw-settings"></i>
-          </a>
-        </div>
-      </div>
-      <div class="user-info-dropdown">
-        <div class="dropdown">
-          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            <span class="user-icon">
-              <img src="vendors/images/photo1.jpg" alt="">
-            </span>
-            <span class="user-name">Ricardo Peralta</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-            <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Perfil</a>
-            <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Configuración</a>
-            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Ayuda</a>
-            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Cerrar sesión</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Fin del Menu Principal -->
+      
+  } else {
 
-  <!-- Inicio del Menu lateral de diseño -->
-  <div class="right-sidebar">
-    <div class="sidebar-title">
-      <h3 class="weight-600 font-16 text-blue">
-        Opciones de Diseño
-        <span class="btn-block font-weight-400 font-12">Configuración de la Interfaz de Usuario</span>
-      </h3>
-      <div class="close-sidebar" data-toggle="right-sidebar-close">
-        <i class="icon-copy ion-close-round"></i>
-      </div>
-    </div>
-    <div class="right-sidebar-body customscroll">
-      <div class="right-sidebar-body-content">
-        <h4 class="weight-600 font-18 pb-10">Fondo del Encabezado</h4>
-        <div class="sidebar-btn-group pb-30 mb-10">
-          <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">Blanco</a>
-          <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Negro</a>
-        </div>
-
-        <h4 class="weight-600 font-18 pb-10">Fondo de la barra lateral</h4>
-        <div class="sidebar-btn-group pb-30 mb-10">
-          <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light ">Blanco</a>
-          <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Negro</a>
-        </div>
-
-        <h4 class="weight-600 font-18 pb-10">Icono de menú desplegable</h4>
-        <div class="sidebar-radio-group pb-10 mb-10">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-1" checked="">
-            <label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-2">
-            <label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input"
-              value="icon-style-3">
-            <label class="custom-control-label" for="sidebaricon-3"><i class="fa fa-angle-double-right"></i></label>
-          </div>
-        </div>
-
-        <h4 class="weight-600 font-18 pb-10">Icono de lista de menú</h4>
-        <div class="sidebar-radio-group pb-30 mb-10">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-1" checked="">
-            <label class="custom-control-label" for="sidebariconlist-1"><i class="ion-minus-round"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-2">
-            <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o"
-                aria-hidden="true"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-3">
-            <label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-4" checked="">
-            <label class="custom-control-label" for="sidebariconlist-4"><i class="icon-copy dw dw-next-2"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-5">
-            <label class="custom-control-label" for="sidebariconlist-5"><i class="dw dw-fast-forward-1"></i></label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input"
-              value="icon-list-style-6">
-            <label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
-          </div>
-        </div>
-
-        <div class="reset-options pt-30 text-center">
-          <button class="btn btn-danger" id="reset-settings">Reiniciar ajustes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Fin del Menu lateral de diseño -->
-
-  <div class="left-side-bar">
-    <div class="brand-logo">
-      <a href="index.html">
-        <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-        <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
-      </a>
-      <div class="close-sidebar" data-toggle="left-sidebar-close">
-        <i class="ion-close-round"></i>
-      </div>
-    </div>
-    <div class="menu-block customscroll">
-      <div class="sidebar-menu">
-        <ul id="accordion-menu">
-          <!-- Menu Inicio -->
-          <li>
-            <a href="calendar.html" class="dropdown-toggle no-arrow">
-              <span class="micon dw dw-house1"></span><span class="mtext">Inicio</span>
-            </a>
-          </li>
-          <!-- Menu Clientes -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-group"></span><span class="mtext">Clientes</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="index.html">Dashboard style 1</a></li>
-              <li><a href="index2.html">Dashboard style 2</a></li>
-              <li><a href="index3.html">Dashboard style 3</a></li>
-            </ul>
-          </li>
-          <!-- Menu Proveedores -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-user-11"></span><span class="mtext">Proveedores</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="form-basic.html">Form Basic</a></li>
-              <li><a href="advanced-components.html">Advanced Components</a></li>
-              <li><a href="form-wizard.html">Form Wizard</a></li>
-              <li><a href="html5-editor.html">HTML5 Editor</a></li>
-              <li><a href="form-pickers.html">Form Pickers</a></li>
-              <li><a href="image-cropper.html">Image Cropper</a></li>
-              <li><a href="image-dropzone.html">Image Dropzone</a></li>
-            </ul>
-          </li>
-          <!-- Menu Usuarios -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-id-card1"></span><span class="mtext">Usuarios</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="basic-table.html">Basic Tables</a></li>
-              <li><a href="datatable.html">DataTables</a></li>
-            </ul>
-          </li>
-          <!-- Menu Configuracion -->
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon dw dw-settings2"></span><span class="mtext">Configuración</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="basic-table.html">Basic Tables</a></li>
-              <li><a href="datatable.html">DataTables</a></li>
-            </ul>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="mobile-menu-overlay"></div>
+      $pagina = 1;
+  }
+  $empezar_desde = ($pagina - 1) * $tamano_pagina;
+  $sql_total = "SELECT * FROM `cargos`";
+  $sql_total = "SELECT * FROM `tipos_empleado`";
+  $sql_total = "SELECT * FROM `tipo_rol`";
+  $resultado = $conexion->prepare($sql_total);
+  $resultado->execute(array());
+  $num_filas = $resultado->rowCount();
+  $total_paginas = ceil($num_filas / $tamano_pagina);
+  //************END PAGINADOR***************** */
+  //************Select Para personas***************** */
+  $registro_cargos = $conexion->query("SELECT * FROM `cargos` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_tipos_empleado = $conexion->query("SELECT * FROM `tipos_empleado` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  $registro_rol = $conexion->query("SELECT * FROM `tipo_rol` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  ?>
+  <!-- Parte del menu principal -->
+  <?php require("partes/parteMenu.php"); ?>
+  <!-- Fin Parte del menu principal -->
 
   <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -252,7 +81,7 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="title">
-                <h4>Empleados</h4>
+                <h4>Configuración de Usuario</h4>
               </div>
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
@@ -260,12 +89,25 @@
                 </ol>
               </nav>
             </div>
-
+            <div class="col-6 text-right">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                  Agregar
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="dropdown-item dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item " href="#" data-toggle="modal" data-target="#marca-modal">Jose</a>
+                  </div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#small-modaladdbanco">Regimen de Facturación</a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#small-modaladdEmpresa">Empresa</a>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
         <!-- Inicio del Contenido -->
         <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-          <!-- Simple Datatable start -->
+          <!-- TABLA CARGOS -->
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
@@ -289,9 +131,10 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_cargos as $cargos) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
-                        <td>Cajero</td>
+                        <td class="table-plus"><?php echo $cargos->id_cargo?></td>
+                        <td><?php echo $cargos->cargo?></td>
                         <td>
                           <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -299,31 +142,18 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Eliminar</a>
+                              <a class="dropdown-item" href="bd/delete_cargo.php?id_cargo=<?php echo $cargos->id_cargo?>"><i class="dw dw-delete-3"></i>Eliminar</a>
                             </div>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td class="table-plus">2</td>
-                        <td>Bodeguero</td>
-                        <td>
-                          <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Eliminar</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            <!--TIPOS EMPLEADOS-->
             <div class="col-md-6 col-sm-12">
               <div class="card-box mb-30">
                 <div class="pd-20">
@@ -347,10 +177,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($registro_tipos_empleado as $tipos_empleados) : ?>
                       <tr>
-                        <td class="table-plus">1</td>
+                        <td class="table-plus"><?php echo $tipos_empleados->id_tip_empleado?></td>
                         <td>
-                         Permanente
+                        <?php echo $tipos_empleados->tipo_empleado?>
                         </td>
                         <td>
                           <div class="dropdown">
@@ -359,26 +190,12 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Eliminar</a>
+                              <a class="dropdown-item" href="bd/delete_tip_empleados.php?id_tip_empleado=<?php echo $tipos_empleados->id_tip_empleado?>"><i class="dw dw-delete-3"></i>Eliminar</a>
                             </div>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td class="table-plus">2</td>
-                        <td>Por contrato</td>
-                        <td>
-                          <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Eliminar</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
@@ -386,57 +203,144 @@
             </div>
           </div>        
         </div>
+        <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+        <!--TIPOS ROLES-->
+        <div class="col-md-6 col-sm-12">
+              <div class="card-box mb-30">
+                <div class="pd-20">
+                  <div class="row">
+                    <div class="col-6">
+                      <h4 class="text-blue h4">Tipos de Roles</h4>
+                    </div>
+                    <div class="col-6 text-right">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRol">Agregar</button>
+                    </div>
+                  </div>
 
-        <!--MODAL CARGO-->
-        <div class="modal fade" id="modalCargo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">Registrar Cargo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <!-- Nombre del cargo -->
-                          <div class="form-group">
-                            <label>Nombre del Cargo: <span class="text-red-50">*</span> </label>
-                            <input type="text" class="form-control">
+                </div>
+                <div class="pb-20">
+                  <table class="data-table table stripe hover nowrap">
+                    <thead>
+                      <tr>
+                        <th class="table-plus">N.º</th>
+                        <th>Rol</th>
+                        <th class="datatable-nosort">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($registro_rol as $tipo_rol) : ?>
+                      <tr>
+                        <td class="table-plus"><?php echo $tipo_rol->id_rol?></td>
+                        <td>
+                        <?php echo $tipo_rol->rol?>
+                        </td>
+                        <td>
+                          <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
+                              <a class="dropdown-item" href="bd/delete_rol.php?id_rol=<?php echo $tipo_rol->id_rol?>"><i class="dw dw-delete-3"></i>Eliminar</a>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
-                  </div>
+                        </td>
+                      </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+            </div>
+           </div>
+        <!--MODAL CARGO-->
+          <div class="modal fade" id="modalCargo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myLargeModalLabel">Registrar cargo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body">
+                <form class="needs-validation" novalidate action="bd/insert_cargo.php" id="formCargo" name="formCargo" method="POST">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <label for="cargo" >Cargo: <span class="text-red-50">*</span> </label>
+                        <input type="text" class="form-control" id="cargo" name="cargo" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
         <!--MODAL TIPO DE EMPLEADO-->
         <div class="modal fade" id="modalTipoEm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Registrar Tipo de Empleado</h5>
+                <h5 class="modal-title" id="myLargeModalLabel">Registrar cargo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               </div>
               <div class="modal-body">
-                <form>
+                <form class="needs-validation" novalidate action="bd/insert_tipo_empleado.php" id="formTipoEmpleado" name="formTipoEmpleado" method="POST">
                   <div class="row">
                     <div class="col-md-12 col-sm-12">
-                      <!-- Nombre del tipo de empleado-->
                       <div class="form-group">
-                        <label>Tipo de Empleado <span class="text-red-50">*</span> </label>
-                        <input type="text" class="form-control">
+                        <label for="tipo_empleado" >Tipo de Empleado: <span class="text-red-50">*</span> </label>
+                        <input type="text" class="form-control" id="tipo_empleado" name="tipo_empleado" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+
                       </div>
                     </div>
                   </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </form>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+         <!--MODAL TIPO ROL-->
+         <div class="modal fade" id="modalRol" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myLargeModalLabel">Registrar Rol</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body">
+                <form class="needs-validation" novalidate  id="Agregargrupo" action="bd/insert_rol.php" id="formRol" name="formRol" method="POST">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <label for="rol" >Rol: <span class="text-red-50">*</span> </label>
+                        <input type="text" class="form-control" id="rol" name="rol" required>
+                        <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -466,6 +370,7 @@
 	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
 	<!-- Datatable Setting js -->
 	<script src="vendors/scripts/datatable-setting.js"></script>
+  <script src="vendors/scripts/validaciones_modal.js"></script> 
 </body>
 
 </html>
