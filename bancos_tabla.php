@@ -1,3 +1,7 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +32,30 @@
 </head>
 
 <body>
+<?php
+  $tamano_pagina = 5;
+  if (isset($_GET["pagina"])) {
+      if ($_GET["pagina"] == 1) {
+          header("Location:http://localhost/Sistemas_Inversione_Picki2/bancos_tabla.php");
+      } else {
+          $pagina = $_GET["pagina"];
+      }
+
+      
+  } else {
+
+      $pagina = 1;
+  }
+  $empezar_desde = ($pagina - 1) * $tamano_pagina;
+  $sql_total = "SELECT * FROM `entidad_banco`";
+  $resultado = $conexion->prepare($sql_total);
+  $resultado->execute(array());
+  $num_filas = $resultado->rowCount();
+  $total_paginas = ceil($num_filas / $tamano_pagina);
+  //************END PAGINADOR***************** */
+  //************Select Para personas***************** */
+  $registro_bancos = $conexion->query("SELECT * FROM `entidad_banco` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  ?>
   <!-- Parte del menu principal -->
   <?php require("partes/parteMenu.php"); ?>
   <!-- Fin Parte del menu principal -->
@@ -75,10 +103,11 @@
 								</tr>
 							</thead>
 							<tbody>
+              <?php foreach ($registro_bancos as $bancos) : ?>
 								<tr>
-									<td class="table-plus">1</td>
-									<td>Bac Credomatic</td>
-									<td>BAC</td>
+									<td class="table-plus"><?php echo $bancos->id_banco?></td>
+									<td><?php echo $bancos->nom_banco?></td>
+									<td><?php echo $bancos->abr_banco?></td>
 									<td>
 									 <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -87,47 +116,12 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                               <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
                               <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                              <a class="dropdown-item" href="bd/delete_bancos.php?id_banco=<?php echo $bancos->id_banco?>"><i class="dw dw-delete-3"></i> Delete</a>
                             </div>
                           </div>
                       </td>
 								</tr>
-								<tr>
-									<td class="table-plus">2</td>
-									<td>El Banco de Occidente C.A.</td>
-									<td>Ocidente</td>
-
-									<td>
-									 <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-								</tr>
-								<tr>
-									<td class="table-plus">3</td>
-									<td>Grupo Financiero Ficohsa</td>	
-									<td>Ficohsa</td>
-									<td>
-									 <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-								</tr>
-
+                <?php endforeach; ?>
 							</tbody>
 						</table>
 					<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1-10 of 12 entries</div>
@@ -146,22 +140,22 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                  <form id="Agregarbanco" action="bd/insert_bancos.php" id="formBanco" name="formBanco" method="POST">
                       <div class="row">
                         <div class="col-md-12 col-sm-12">
                           <!-- Nombre del banco-->
                           <div class="form-group">
-                            <label>Nombre del Banco: <span class="text-red-50">*</span> </label>
-                            <input type="text" class="form-control">
+                            <label for="nombre">Nombre del Banco: <span class="text-red-50">*</span> </label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
                           </div>
                           <div class="form-group">
-                            <label>Abreviatura: <span class="text-red-50">*</span> </label>
-                            <input type="text" class="form-control">
+                            <label for="abr">Abreviatura: <span class="text-red-50">*</span> </label>
+                            <input type="text" id="abr" name="abr" class="form-control" required>
                           </div>
                         </div>
                       </div>
                       <div class="text-right">
-                      <button type="button" class="btn btn-success"> Guardar</button>
+                      <button id="btnActionForm" type="submit" class="btn btn-success"><span id="btnTex">Registrar</span></button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
                       </div>
                     </form>

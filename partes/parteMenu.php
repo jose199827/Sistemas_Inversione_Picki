@@ -203,7 +203,8 @@
             </a>
             <ul class="submenu">
               <li><a href="confiProducto.php">Configuracion de Productos</a></li>
-              <li><a href="datatable.html">DataTables</a></li>
+              <li><a href="cargo.php">Configuracion de Empleados</a></li>
+              <li><a href="confiFactura.php">Configuracion de Factura</a></li>
             </ul>
           </li>
 
