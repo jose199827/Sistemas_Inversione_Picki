@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     }
+
     var fromCategoria = document.querySelector("#fromCategoria");
     fromCategoria.onsubmit = function(e) {
         e.preventDefault();
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     }
+
     var formGrupo = document.querySelector("#formGrupo");
     formGrupo.onsubmit = function(e) {
         e.preventDefault();
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
     }
+
     var formGrupo = document.querySelector("#formImpuestos");
     formGrupo.onsubmit = function(e) {
         e.preventDefault();
