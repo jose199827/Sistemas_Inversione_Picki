@@ -1,3 +1,7 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
 <!DOCTYPE html>
 <html>
 
@@ -141,7 +145,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Concepto: <span class="text-red-50">*</span> </label>
-                                    <input type="number" class="form-control" min="0" max="100">
+                                    <input type="number" class="form-control  min="0 max="100">
                                   </div>
                                 </div>
                               </div>
