@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8">
+  <title>Sistema de Facturación Picki</title>
+
+  <!-- Site favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS para la tabla -->
+  <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+  <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+</head>
+
+<body>
+  <!-- Parte del menu principal -->
+  <?php require("partes/parteMenu.php"); ?>
+  <!-- Fin Parte del menu principal -->
+
+  <div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+      <div class="min-height-200px">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="title">
+                <h4>Empleados</h4>
+              </div>
+              <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                </ol>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+       
+        <!-- Simple Datatable End -->
+        <div class="card-box mb-30">
+          <div class="pd-20">
+            <h4 class="text-blue h4">Registrar Empleado</h4>
+            <form action="add_empleado.php" id="formEmpleado" name="formEmpleado" method="POST" >
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>Información Personal</p>
+                  <!-- Nombre -->
+                  <div class="form-group">
+                  <label for="nombreEmpleado">Nombre: <span class="danger">*</span></label>
+                      <input class="form-control form-control-lg" type="text" id="nombreEmpleado" name="nombreEmpleado">
+                   </div>
+                  <!-- Apellido -->
+                  <div class="form-group">
+                      <label for="apellido">Apellido:</label>
+                      <input type="text" class="form-control form-control-lg" id="apellido" name="apellido">
+                   </div>
+                  <!-- Num ID -->
+                  <div class="form-group">
+                      <label for="identidad">Num. Identidad:</label>
+                      <input type="text" class="form-control form-control-lg" id="identidad" name="identidad">
+                   </div>
+                  <!-- Edad -->
+                  <div class="form-group">
+                      <label for="edad">Edad:</label>
+                      <input type="number" value="" class="form-control form-control-lg" id="edad" name="edad">
+                   </div>
+                  <!-- Fecha Nacimiento -->
+                  <div class="form-group">
+                      <label for="nacimiento">Fecha de Nacimiento:</label>
+                      <input type="date" class="form-control form-control-lg" id="nacimiento" name="nacimiento">
+                   </div>
+                  <!-- Genero -->
+                  <div class="form-group">
+                      <label for="genero">Género:</label>
+                      <select class="form-control form-control-lg" id="genero" name="genero">
+                        <option></option>
+                        <option>Femenino</option>
+                        <option>Masculino</option>
+                        <option>Otro</option>
+                      </select>
+                   </div> 
+                
+                  <!--Correo -->
+                  <div class="form-group">
+                      <label for="correo">Correo Electrónico: </label>
+                      <input type="email" class="form-control form-control-lg" id="correo" name="correo">
+                   </div>
+                  <!-- Telefono -->
+                  <div class="form-group">
+                      <label for="telefono">Teléfono: </label>
+                      <input type="text" class="form-control form-control-lg" id="telefono" name="telefono">
+                 </div>
+                  <!-- Direccion -->
+                  <div class="form-group">                   
+                      <label for="direccion">Dirección:</label>
+                      <textarea class="form-control" name="direccion" id="direccion" cols="30" rows="10" style="resize:vertical; height: 140px;"></textarea>
+                   </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                 
+                   <p>Información de Empleo</p>
+
+                  <!-- Salario -->
+                  <div class="form-group">
+                      <label for="salario">Salario: </label>
+                      <input type="text" class="form-control form-control-lg" id="salario">
+                 </div>
+                  <!-- Cargo -->
+                  <div class="form-group">
+                      <label for="cargo">Cargo:</label>
+                      <select class="form-control form-control-lg" id="cargo" name="cargo">
+                          <option></option>
+                          <option>Cajero</option>
+                          <option>Dependienta</option>
+                          <option>Bodeguero</option>
+                          <option>Gerente</option>
+                     </select>
+                  </div>
+                  <!-- Tipo Empleado -->
+                  <div class="form-group">
+                      <label for="tipo">Tipo de Empleado:</label>
+                      <select class="form-control form-control-lg" id="tipo" name="tipo">
+                         <option></option>
+                         <option>Permanente</option>
+                         <option>Por contrato</option>
+                         <option>Por Horas</option>
+                         <option>4</option>
+                     </select>
+                   </div>
+                   <!-- Fecha Ingreso -->
+                   <div class="form-group">
+                      <label for="ingreso">Fecha de Ingreso: </label>
+                      <input type="date" class="form-control form-control-lg" id="ingreso">
+                   </div>
+                    <!-- Fecha Salida -->
+                   <div class="form-group">
+                      <label for="salida">Fecha de Salida: </label>
+                      <input type="date" class="form-control form-control-lg" id="salida">
+                   </div>
+                   <!-- Estatus -->
+                   <div class="form-group">
+                      <label for="estatus">Estatus:</label>
+                      <select class="form-control form-control-lg" id="estatus" name="estatus">
+                       <option></option>
+                          <option>Activo</option>
+                          <option>Inactivo</option>                    
+                      </select>
+                   </div>
+                   <!-- Foto -->
+                   <div class="form-group">
+                     <label for="foto">Foto: </label>
+                     <input type="file" class="form-control-file border form-control-lg" name="foto">
+                  </div>
+                 
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <p>Usuario</p>
+                  <!-- Usuario -->
+                  <div class="form-group">
+                     <label for="usuario">Nombre de Usuario: </label>
+                     <input type="text" class="form-control form-control-lg" id="usuario">
+                 </div> 
+                 <!-- Contraseña -->
+                 <div class="form-group">
+                     <label for="password">Password: </label>
+                     <input type="text" class="form-control form-control-lg" id="password" name="password">
+                 </div> 
+                 <!--Pregunta 1 -->
+                 <div class="form-group">
+                     <label for="pregunta1">Preguntas de Seguridad:</label>
+                     <select class="form-control form-control-lg" id="pregunta1" name="pregunta1">
+                         <option></option>
+                         <option>Nombre de tu mascota de la infancia</option>
+                         <option>Masculino</option>
+                         <option>Otro</option>
+                     </select>
+                   </div> 
+                 <!--Pregunta 2 -->
+                 <div class="form-group">
+                     <label for="pregunta2">Preguntas de Seguridad:</label>
+                     <select class="form-control form-control-lg" id="pregunta2" name="pregunta2">
+                         <option></option>
+                         <option>Nombre de tu mascota de la infancia</option>
+                         <option>Masculino</option>
+                         <option>Otro</option>
+                     </select>
+                 </div> 
+                 <div class="centrado">
+                     <input type="submit" class="btn btn-success" value="Guardar">
+                 </div>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+      <!-- Inicio de footer -->
+      <?php require("partes/parteFooter.php"); ?>
+      <!-- Fin de footer -->
+    </div>
+  </div>
+
+  <!-- js -->
+  <script src="vendors/scripts/core.js"></script>
+  <script src="vendors/scripts/script.min.js"></script>
+  <script src="vendors/scripts/process.js"></script>
+  <script src="vendors/scripts/layout-settings.js"></script>
+  <!-- js para la tabla -->
+  <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+  <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+  <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+  <!-- buttons for Export datatable -->
+  <script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+  <script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+  <script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+  <script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+  <script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+  <script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+  <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+  <!-- Datatable Setting js -->
+  <script src="vendors/scripts/datatable-setting.js"></script>
+      <!-- add sweet alert js & css in footer -->
+      <link rel="stylesheet" type="text/css" href="src/plugins/sweetalert2/sweetalert2.css">
+    <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
+    <!-- Datatable Setting js -->
+    <script src="vendors/scripts/datatable-setting.js"></script>
+    <script src="vendors/scripts/validacion.js"></script>
+  </script>
+</body>
+</body>
+
+</html>

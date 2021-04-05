@@ -2,6 +2,7 @@
 <?php
 include_once "bd/conexion.php"
 ?>
+
 <!DOCTYPE html>
 <html>
 

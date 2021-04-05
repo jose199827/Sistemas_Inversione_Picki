@@ -91,7 +91,7 @@ include_once "bd/conexion.php"
               
             </div>
             <div class="pull-right">
-               <a href="agregar_empleado.php"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
+               <a href="add_empleado.php"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
 				  	 </div>
         </div>
         <!--TABLA-->

@@ -165,7 +165,7 @@
             </a>
             <ul class="submenu">
               <li><a href="empleados.php">Empleados</a></li>
-              <li><a href="agregar_empleado.php">Agregar Empleado</a></li>
+              <li><a href="add_empleado.php">Agregar Empleado</a></li>
               <li><a href="perfil_empleado.php">Perfil Empleado</a></li>
             </ul>
           </li>
