@@ -60,76 +60,24 @@
     <div class="pd-ltr-20 xs-pd-20-10">
       <div class="min-height-200px">
       
-        <div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<h4 class="text-blue h4">Registrar Empleados</h4>
-					</div>
-					<div class="wizard-content">
-						<form class="tab-wizard wizard-circle wizard" action="agregar_empleado.php" method="POST">
-              <?php
-                if (isset($_POST['nombre'])) {
-                  $nombre = $_POST['nombre'];
-                  $apellido = $_POST['apellido'];
-                  $identidad = $_POST['identidad'];
-                  $edad = $_POST['edad'];
-                  $nacimiento = $_POST['nacimiento'];
-                  $genero = $_POST['genero'];
-                  $correo = $_POST['correo'];
-                  $telefono = $_POST['telefono'];
-                  $direccion = $_POST['direccion'];
-                  $password = $_POST['password'];
-
-                  $campos = array();
-
-                  if ($nombre == "") {
-                    array_push($campos, "Nombre obligatorio");
-                  }
-                  if ($apellido == "") {
-                    array_push($campos, "Apellido obligatorio");
-                  }
-                 if ($identidad == "") {
-                   array_push($campos, "Núm. de Identidad obligatorio");
-                  } 
-                 if ($edad == "" || strlen($edad) < 6) {
-                   array_push($campos, "Edad obligatorio");
-                  } 
-                 if ($nacimiento == "") {
-                   array_push($campos, "Fecha de nacimiento obligatorio");
-                  } 
-                 if ($correo == "" || strops($correo, "@") === false) {
-                   array_push($campos, "Correo obligatorio");
-                  }
-                 if ($telefono == "") {
-                   array_push($campos, "Telefono obligatorio");
-                  } 
-                 if ($direccion == "") {
-                    array_push($campos, "Dirección obligatorio");
-                  } 
-                 if ($password == "" || strlen($password) < 6) {
-                   array_push($campos, "Campo obligatorio");
-                  }
-
-                  if (count($campos) > 0) {
-                   echo "<div class='error'>";
-                   for ($i=0; $i < count($campos) ; $i++) { 
-                     echo "<li>".$campos[$i]."</i>";
-                    }
-                  }else {
-                   echo "<div class='correcto'>
-                         Datos correctos";
-                  }
-                 echo "</div>";
-                }
-             ?>
-            
+         <div class="pd-20 card-box mb-30">
+			 <div class="clearfix">
+			     <h4 class="text-blue h4">Registrar Empleados</h4>
+		     </div>
+		     <div class="wizard-content">
+		        	<form class="tab-wizard wizard-circle wizard" class="needs-validation" novalidate>
 							<h5>Información Personal</h5>
 							<section>
 								<div class="row">
 									<div class="col-md-6">		 
-                    <div class="form-group">
-                      <label for="nombre">Nombre:</label>
-                      <input class="form-control form-control-lg" type="text" id="nombre" name="nombre">
-                   </div>
+                                    <div class="form-group">
+                            <label >Nombres de la Persona:</label>
+                      <input type="text" name="nombre" maxlength="50" class="form-control" required pattern="^[A-Za-z ]*$">
+                      <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
+                    </div>
+
 									</div>
 									<div class="col-md-6">
                     <div class="form-group">
@@ -307,8 +255,29 @@
                          </div>   
                      </div>
                    </div>	 
-							</section>
-						</form>
+				</section>
+				</form>
+                <script>
+                // Disable form submissions if there are invalid fields
+                (function() {
+                  'use strict';
+                  window.addEventListener('load', function() {
+                    // Get the forms we want to add validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                      form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                      }, false);
+                    });
+                  }, false);
+                })();
+              </script>
+
 					</div>
 				</div>
       </div>
@@ -317,6 +286,8 @@
       <!-- Fin de footer -->
     </div>
   </div>
+
+  
   <!-- js -->
   <script src="vendors/scripts/core.js"></script>
   <script src="vendors/scripts/script.min.js"></script>
