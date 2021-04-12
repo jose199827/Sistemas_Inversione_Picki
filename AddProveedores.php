@@ -119,7 +119,7 @@ include_once "bd/conexion.php"
 			 <div class="col-md-6">
 		     <div class="form-group">
 			<label for="banco" >seleccionar banco:</label>
-            <select class="form-control form-control-lg" id="banco" name="banco">
+            <select class="form-control form-control-lg" id="banco" name="banco" required>
             <option selected=""></option>
             <!--halar datos de db -->
             <?php
@@ -129,6 +129,8 @@ include_once "bd/conexion.php"
               endforeach;
             ?>
             </select>
+            <div class="valid-feedback">Valido</div>
+            <div class="invalid-feedback">Por favor, rellena el campo</div>
 		    </div>
 			</div>
 		    <div class="col-md-6">

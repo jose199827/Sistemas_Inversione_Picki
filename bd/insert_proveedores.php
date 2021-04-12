@@ -48,7 +48,7 @@ include_once "conexion.php";
       ":Fecha"=>$Fecha, 
       ":Usr"=>$Usr)); 
 
-    header("Location:../TablaProveedores.php");
     echo "<h1> Succesfull Operation.  </h1>";
+    header("Location:../TablaProveedores.php");
 
 ?>
