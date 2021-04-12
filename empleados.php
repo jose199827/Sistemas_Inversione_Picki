@@ -46,7 +46,7 @@ include_once "bd/conexion.php"
     
 	
     //*************PAGINADOR**************** */
-    $tamano_pagina = 5;
+    $tamano_pagina = 20;
     if (isset($_GET["pagina"])) {
         if ($_GET["pagina"] == 1) {
             header("Location:http://localhost:8080/Sistemas_Inversione_Picki/empleados.php");
@@ -81,11 +81,12 @@ include_once "bd/conexion.php"
       <div class="page-header d-flex justify-content-between align-items-center">
 		  <div class="col-md-6 col-sm-12">
               <div class="title">
-                <h4>Perfil Empleado</h4>
+                <h4>Empleado</h4>
               </div>
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Empleados</li>
                 </ol>
               </nav>
               
@@ -136,7 +137,7 @@ include_once "bd/conexion.php"
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="perfil_empleado.php"><i class="dw dw-eye"></i> Vista</a>
+												<a class="dropdown-item" href="perfil_empleado.php?id_persona=<?php echo $personas->id_persona ?>"><i class="dw dw-eye"></i> Vista</a>
 												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
 												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Eliminar</a>
 											</div>

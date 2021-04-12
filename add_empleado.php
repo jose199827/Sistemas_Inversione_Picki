@@ -1,3 +1,28 @@
+<?php
+
+ include_once "bd/conexion.php";
+ 
+ $tamano_pagina = 10 ;
+ if (isset($_GET["pagina"])) {
+     if ($_GET["pagina"] == 1) {
+         header("Location:HrsVOAE.php");
+     }else {
+         $pagina = $_GET["pagina"];
+     }
+ } else {
+     $pagina = 1;
+ }
+ $empezar_desde = ($pagina - 1) * $tamano_pagina;
+ $sql_total = "SELECT * FROM `cargos`";
+ $resultado = $conexion->prepare($sql_total);
+ $resultado->execute(array());
+ $num_filas = $resultado->rowCount();
+ $total_paginas = ceil($num_filas / $tamano_pagina);
+ //************END PAGINADOR***************** */
+ //************Select Para personas***************** */
+ $registro_Cargo = $conexion->query("SELECT * FROM `cargos` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+ 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +53,8 @@
 </head>
 
 <body>
+
+   
   <!-- Parte del menu principal -->
   <?php require("partes/parteMenu.php"); ?>
   <!-- Fin Parte del menu principal -->
@@ -44,6 +71,7 @@
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Agregar Empleado</li>
                 </ol>
               </nav>
             </div>
@@ -55,7 +83,7 @@
         <div class="card-box mb-30">
           <div class="pd-20">
             <h4 class="text-blue h4">Registrar Empleado</h4>
-            <form action="add_empleado.php" id="formEmpleado" name="formEmpleado" method="POST" >
+            <form class="needs-validation" novalidate action="bd/insert_empleado.php" id="formEmpleado" name="formEmpleado" method="POST" >
               <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <p>Información Personal</p>
@@ -63,11 +91,17 @@
                   <div class="form-group">
                   <label for="nombreEmpleado">Nombre: <span class="danger">*</span></label>
                       <input class="form-control form-control-lg" type="text" id="nombreEmpleado" name="nombreEmpleado">
+                      <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
                    </div>
                   <!-- Apellido -->
                   <div class="form-group">
                       <label for="apellido">Apellido:</label>
                       <input type="text" class="form-control form-control-lg" id="apellido" name="apellido">
+                      <span class="msj"></span>
+                      <div class="valid-feedback">Valido</div>
+                      <div class="invalid-feedback">Por favor, rellena el campo</div>
                    </div>
                   <!-- Num ID -->
                   <div class="form-group">
@@ -118,62 +152,92 @@
                   <!-- Salario -->
                   <div class="form-group">
                       <label for="salario">Salario: </label>
-                      <input type="text" class="form-control form-control-lg" id="salario">
+                      <input type="text" class="form-control form-control-lg" id="salario" name="salario">
                  </div>
                   <!-- Cargo -->
                   <div class="form-group">
+                    <div class="form-group">
                       <label for="cargo">Cargo:</label>
                       <select class="form-control form-control-lg" id="cargo" name="cargo">
-                          <option></option>
-                          <option>Cajero</option>
-                          <option>Dependienta</option>
-                          <option>Bodeguero</option>
-                          <option>Gerente</option>
+                      <option selected=""></option>
+                      <?php
+
+                        $Cod_cargo = $conexion->query("SELECT * FROM `cargos`")->fetchAll(PDO::FETCH_OBJ);
+                        foreach($Cod_cargo as $Cargo) : 
+
+                          echo '<option value = " '.$Cargo->id_cargo.' ">' .$Cargo->cargo. '</option>';
+                        endforeach;
+                        
+                      ?>
                      </select>
+                     </div>
                   </div>
                   <!-- Tipo Empleado -->
                   <div class="form-group">
-                      <label for="tipo">Tipo de Empleado:</label>
+                    <label for="tipo">Tipo de Empleado:</label>
                       <select class="form-control form-control-lg" id="tipo" name="tipo">
-                         <option></option>
-                         <option>Permanente</option>
-                         <option>Por contrato</option>
-                         <option>Por Horas</option>
-                         <option>4</option>
+                         <option selected=""></option>
+                         <!--Jalar datos de db -->
+                         <?php
+
+                            $Cod_Empleado = $conexion->query("SELECT * FROM `tipos_empleado`")->fetchAll(PDO::FETCH_OBJ);
+                            foreach($Cod_Empleado as $Tipo_empleado) : 
+
+                            echo '<option value = " '.$Tipo_empleado->id_tip_empleado.' ">' .$Tipo_empleado->tipo_empleado. '</option>';
+                           endforeach;
+                        
+                          ?>
                      </select>
-                   </div>
+                  </div>
                    <!-- Fecha Ingreso -->
                    <div class="form-group">
                       <label for="ingreso">Fecha de Ingreso: </label>
-                      <input type="date" class="form-control form-control-lg" id="ingreso">
+                      <input type="date" class="form-control form-control-lg" id="ingreso" name="ingreso">
                    </div>
                     <!-- Fecha Salida -->
                    <div class="form-group">
                       <label for="salida">Fecha de Salida: </label>
-                      <input type="date" class="form-control form-control-lg" id="salida">
+                      <input type="date" class="form-control form-control-lg" id="salida" name="salida">
                    </div>
                    <!-- Estatus -->
                    <div class="form-group">
                       <label for="estatus">Estatus:</label>
                       <select class="form-control form-control-lg" id="estatus" name="estatus">
-                       <option></option>
-                          <option>Activo</option>
-                          <option>Inactivo</option>                    
+                       <option selected=""></option>
+                          <option value="1">Activo</option>
+                          <option value="2">Inactivo</option>                    
                       </select>
                    </div>
                    <!-- Foto -->
                    <div class="form-group">
                      <label for="foto">Foto: </label>
-                     <input type="file" class="form-control-file border form-control-lg" name="foto">
+                     <input type="file" class="form-control-file border form-control-lg" name="foto" id="foto">
                   </div>
                  
                 </div>
                 <div class="col-md-4 col-sm-12">
                   <p>Usuario</p>
+                   <!-- Rol -->
+                   <div class="form-group">
+                      <label for="rol">Rol de Usuario:</label>
+                      <select class="form-control form-control-lg" id="rol" name="rol">
+                        <option selected=""></option>
+                        <!--Jalar datos de db -->                      
+                        <?php
+
+                          $Cod_Rol = $conexion->query("SELECT * FROM `tipo_rol`")->fetchAll(PDO::FETCH_OBJ);
+                          foreach($Cod_Rol as $Rol) : 
+
+                          echo '<option value = " '.$Rol->id_rol.' ">' .$Rol->rol. '</option>';
+                          endforeach;
+
+                        ?>
+                     </select>
+                   </div>
                   <!-- Usuario -->
                   <div class="form-group">
                      <label for="usuario">Nombre de Usuario: </label>
-                     <input type="text" class="form-control form-control-lg" id="usuario">
+                     <input type="text" class="form-control form-control-lg" id="usuario" name="usuario">
                  </div> 
                  <!-- Contraseña -->
                  <div class="form-group">
@@ -182,28 +246,53 @@
                  </div> 
                  <!--Pregunta 1 -->
                  <div class="form-group">
-                     <label for="pregunta1">Preguntas de Seguridad:</label>
+                     <label for="pregunta1">Pregunta de Seguridad 1:</label>
                      <select class="form-control form-control-lg" id="pregunta1" name="pregunta1">
-                         <option></option>
-                         <option>Nombre de tu mascota de la infancia</option>
-                         <option>Masculino</option>
-                         <option>Otro</option>
+                       <option selected=""></option>
+                        <!--Jalar datos de db -->                      
+                        <?php
+
+                          $Cod_Preguntas = $conexion->query("SELECT * FROM `preguntas_seguridad`")->fetchAll(PDO::FETCH_OBJ);
+                          foreach($Cod_Preguntas as $Preguntas) : 
+
+                          echo '<option value = " '.$Preguntas->id_preg_seg.' ">' .$Preguntas->preguntas. '</option>';
+                          endforeach;
+
+                        ?>
                      </select>
                    </div> 
+                   <div class="form-group">
+                      <label for="Respuesta1">Respuesta 1: </label>
+                      <input type="text" class="form-control form-control-lg" id="Respuesta1" name="Respuesta1">
+                  </div>
+                   
                  <!--Pregunta 2 -->
                  <div class="form-group">
-                     <label for="pregunta2">Preguntas de Seguridad:</label>
+                     <label for="pregunta2">Pregunta de Seguridad 2:</label>
                      <select class="form-control form-control-lg" id="pregunta2" name="pregunta2">
-                         <option></option>
-                         <option>Nombre de tu mascota de la infancia</option>
-                         <option>Masculino</option>
-                         <option>Otro</option>
+                        <option selected=""></option>
+                        <!--Jalar datos de db -->                      
+                        <?php
+
+                          $Cod_Preguntas = $conexion->query("SELECT * FROM `preguntas_seguridad`")->fetchAll(PDO::FETCH_OBJ);
+                          foreach($Cod_Preguntas as $Preguntas) : 
+
+                          echo '<option value = " '.$Preguntas->id_preg_seg.' ">' .$Preguntas->preguntas. '</option>';
+                          endforeach;
+
+
+                        ?>
                      </select>
                  </div> 
-                 <div class="centrado">
+                 <div class="form-group">
+                      <label for="Respuesta2">Respuesta 2: </label>
+                      <input type="text" class="form-control form-control-lg" id="Respuesta1" name="Respuesta2">
+                  </div>
+                  <div class="centrado">
                      <input type="submit" class="btn btn-success" value="Guardar">
                  </div>
                 </div>
+               
               </div>
             </form>
             
@@ -243,7 +332,7 @@
 
     <!-- Datatable Setting js -->
     <script src="vendors/scripts/datatable-setting.js"></script>
-    <script src="vendors/scripts/validacion.js"></script>
+    <script src="vendors/scripts/validaciones_modal.js"></script> 
   </script>
 </body>
 </body>
