@@ -1,3 +1,8 @@
+<!--   CONEXION A LA BASE DE DATOS -->
+<?php
+include_once "bd/conexion.php"
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,9 +30,49 @@
   <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
   <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+  </script>
 </head>
 
 <body>
+	<?php
+    
+	
+    //*************PAGINADOR**************** */
+    $tamano_pagina = 5;
+    if (isset($_GET["pagina"])) {
+        if ($_GET["pagina"] == 1) {
+            header("Location:http://localhost/Sistemas_Inversione_Picki/TablaProveedores.php");
+        } else {
+            $pagina = $_GET["pagina"];
+        }
+
+        
+    } else {
+
+        $pagina = 1;
+    }
+
+    $empezar_desde = ($pagina - 1) * $tamano_pagina;
+    $sql_total = "SELECT * FROM `proveedores`";
+    $resultado = $conexion->prepare($sql_total);
+    $resultado->execute(array());
+    $num_filas = $resultado->rowCount();
+    $total_paginas = ceil($num_filas / $tamano_pagina);
+    //************END PAGINADOR***************** */
+    //************Select Para proveedores***************** */
+    $registro_proveedores = $conexion->query("SELECT `id_proveedor`,`rtn_empresa`,`nom_empresa`, `con_empresa`, `id_banco`,`num_cuenta` FROM `proveedores` LIMIT $empezar_desde,$tamano_pagina")->fetchAll(PDO::FETCH_OBJ);
+  ?>
+  <!-- Insert -->
+
   <!-- Parte del menu principal -->
   <?php require("partes/parteMenu.php"); ?>
   <!-- Fin Parte del menu principal -->
@@ -35,119 +80,80 @@
   <div class="mobile-menu-overlay"></div>
   <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
-		<div class="page-header d-flex justify-content-between align-items-center">
-						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Sistema Inversiones Picki</h4>
-							</div>
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Proveedores</li>
-								</ol>
-							</nav>
-						</div>          
-          <div class="pd-20">				
-             <div class="pull-right">
-            <a href="AddProveedores.php"><button type="button" class="btn btn-primary" data-toggle="modal">Agregar</button></a>  
-				 </div>
-				 </div>
-        </div>
-        <div class="card-box mb-30">
-          <div class="pd-20">
-          	<h4 class="text-blue h4">Tabla Bancos</h4>
-            <div class="row">
-                </div>
-          <div class="pb-20">
-            <table class="table hover multiple-select-row data-table-export nowrap">
-              <thead>
-                <tr>
-                  <th class="table-plus datatable-nosort">N.°</th>
-                  <th>Nombre Empresa</th>
-                  <th>Banco</th>
-                  <th>#Cuenta</th>
-                  <th>RTN</th>
-                  <th>Contacto</th>
-                  <th>Telefono</th>
-                  <th class="datatable-nosort">Acciones</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td class="table-plus">1</td>
-                  <td>Adidas</td>
-                  <td>BAC</td>
-                  <td>45894722</td>
-                  <td>080119879921825</td>
-                  <td>Leonardo Scartino</td>
-                  <td>2220-6465</td>
-                  <td>
-                   <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-
-                            </div>
-
-                          </div>
-                      </td>
-                </tr>
-                <tr>
-                  <td class="table-plus">2</td>
-                  <td>Victoria Secret</td>
-                  <td>Occidente</td>
-                  <td>236598952</td>
-                  <td>080129421652534</td>
-                  <td>Martha Pereira</td>
-                  <td>2220-7898</td>
-                  <td>
-                   <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-                </tr>
-                <tr>
-                  <td class="table-plus">3</td>
-                  <td>Bayern</td> 
-                  <td>Ficohsa</td>
-                  <td>20000475283</td>
-                  <td>080119878525126</td>
-                  <td>Mario Zelaya</td>
-                  <td>2123-5688</td>
-                  <td>
-
-                   <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                              <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                          </div>
-                      </td>
-                </tr>
-
-              </tbody>
-            </table>
-
-          </div>
-            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1-10 of 12 entries</div>
-        </div>
-      </div>
+	<div class="page-header d-flex justify-content-between align-items-center">
+	<div class="col-md-6 col-sm-12">
+    <div class="title">
+	<h4>Sistema Inversiones Picki</h4>
+	</div>
+	<nav aria-label="breadcrumb" role="navigation">
+	<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Proveedores</li>
+	</ol>
+	</nav>
+	</div>    
+	<div class="pull-right">
+    <a href="addproveedores.php"> <button type="button" class="btn btn-primary" data-toggle="modal" >Agregar</button></a>
+	</div>      
+    </div>
+    <div class="card-box mb-30">
+    <div class="pd-20">
+    <h4 class="text-blue h4">Tabla Proveedores</h4>
+    <div class="row">
+    </div>
+    <div class="pb-20">
+    <table class="table hover multiple-select-row data-table-export nowrap">
+    <thead>
+    <tr>
+    <th class="table-plus datatable-nosort">N.°</th>
+    <th>Rtn </th>
+    <th>Nombre </th>
+    <th>contacto</th>
+    <th>banco</th>
+    <th>cuenta</th>
+    <th class="datatable-nosort">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($registro_proveedores as $proveedores) : ?>
+    <tr>
+    <td class="table-plus">
+    <?php echo $proveedores->id_proveedor ?>
+	</td>
+	<td>
+	<?php echo $proveedores->rtn_empresa ?>
+	</td>
+	<td>
+	<?php echo $proveedores->nom_empresa ?>
+	</td>
+	<td>
+	<?php echo $proveedores->con_empresa ?>
+	</td>
+	<td>
+	<?php echo $proveedores->id_banco ?>
+	</td>
+	<td>
+    <?php echo $proveedores->num_cuenta ?>
+	</td>
+	<td>
+    <div class="dropdown">
+	<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+	<i class="dw dw-more"></i>
+	</a>
+	<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+	<a class="dropdown-item" href="TablaProveedores.php"><i class="dw dw-eye"></i> Vista</a>
+	<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i>Editar</a>
+	<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Eliminar</a>
+	</div>
+	</div>
+	</td>
+	</tr>
+    <?php endforeach; ?>	
+    </tbody>
+    </table>
+    </div>
+    </div>
+     </div>
       <!-- Inicio de footer -->
       <?php require("partes/parteFooter.php"); ?>
       <!-- Fin de footer -->
